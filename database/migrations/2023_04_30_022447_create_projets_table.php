@@ -26,8 +26,8 @@ class CreateProjetsTable extends Migration
             // $table->unsignedBigInteger('site_id');
             // $table->foreign('site_id')->references('id')->on('sites');
             //***** */
-            $table->time('proj_start', 0)->format('H:i:s');
-            $table->time('proj_end', 0)->format('H:i:s');
+            $table->date('proj_start')->nullable();
+            $table->date('proj_end')->nullable();
             $table->timestamps();
         });
     }

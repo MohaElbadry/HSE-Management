@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
+use App\Models\Site;
+use App\Models\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Composer;
 
 class ProjetController extends Controller
 {
@@ -12,7 +15,8 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        //
+        $projets = Projet::all();
+        return view('projets.index', compact('projets'));
     }
 
     /**
@@ -20,7 +24,9 @@ class ProjetController extends Controller
      */
     public function create()
     {
-        //
+        $sites = Site::all();
+        $utilisateurs = Utilisateur::all();
+        return view('projets.create', compact('sites', 'utilisateurs'));
     }
 
     /**
@@ -28,15 +34,28 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'site_id' => 'required',
+            'proj_start' => 'required'
+        ]);
+
+        Projet::create($validatedData);
+
+        return redirect()->route('projets.index')->with('success', 'Project added successfully');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Projet $projet)
     {
-        //
+        $sites = Site::all();
+        $utilisateurs = Utilisateur::all();
+        return view('projets.show', compact('projet', 'sites', 'utilisateurs'));
     }
 
     /**
@@ -44,7 +63,9 @@ class ProjetController extends Controller
      */
     public function edit(Projet $projet)
     {
-        //
+        $sites = Site::all();
+        $utilisateurs = Utilisateur::all();
+        return view('projets.edit', compact('projet', 'sites', 'utilisateurs'));
     }
 
     /**
@@ -52,7 +73,17 @@ class ProjetController extends Controller
      */
     public function update(Request $request, Projet $projet)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'site_id' => 'required',
+            'proj_start' => 'required'
+
+        ]);
+        $projet->update($validatedData);
+        return redirect()->route('projets.index')
+            ->with('success', 'projet UPDATE  succ');
     }
 
     /**
@@ -60,6 +91,8 @@ class ProjetController extends Controller
      */
     public function destroy(Projet $projet)
     {
-        //
+        $projet->delete();
+        return redirect()->route('projets.index')
+            ->with('success', 'projet DELETED  succ');
     }
 }

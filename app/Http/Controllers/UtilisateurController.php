@@ -12,7 +12,8 @@ class UtilisateurController extends Controller
      */
     public function index()
     {
-        //
+        $utilisateurs = Utilisateur::all();
+        return view('utilisateurs.index', compact('utilisateurs'));
     }
 
     /**
@@ -20,7 +21,7 @@ class UtilisateurController extends Controller
      */
     public function create()
     {
-        //
+        return view('utilisateurs.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class UtilisateurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
+            'password' => 'required'
+        ]);
+        $input = $request->all();
+        Utilisateur::create($input);
+        return redirect()->route('utilisateurs.index')
+            ->with('success', 'utilisateurs Added succ');
     }
 
     /**
@@ -36,7 +47,7 @@ class UtilisateurController extends Controller
      */
     public function show(Utilisateur $utilisateur)
     {
-        //
+        return view('utilisateurs.show', compact('utilisateur'));
     }
 
     /**
@@ -44,7 +55,7 @@ class UtilisateurController extends Controller
      */
     public function edit(Utilisateur $utilisateur)
     {
-        //
+        return view('utilisateurs.edit', compact('utilisateur'));
     }
 
     /**
@@ -52,7 +63,10 @@ class UtilisateurController extends Controller
      */
     public function update(Request $request, Utilisateur $utilisateur)
     {
-        //
+        $input = $request->all();
+        $utilisateur->update($input);
+        return redirect()->route('utilisateurs.index')
+            ->with('success', 'utilisateurs UPDATE  succ');
     }
 
     /**
@@ -60,6 +74,9 @@ class UtilisateurController extends Controller
      */
     public function destroy(Utilisateur $utilisateur)
     {
-        //
+
+        $utilisateur->delete();
+        return redirect()->route('utilisateurs.index')
+            ->with('success', 'utilisateurs DELETED  succ');
     }
 }

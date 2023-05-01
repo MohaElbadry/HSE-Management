@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UtilisateurController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('utilisateurs', UtilisateurController::class);
+Route::resource('sites', SiteController::class);
+Route::resource('projets', ProjetController::class);
+
+
+
 
 Auth::routes();
 
