@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Incident;
+use App\Models\Projet;
 use Illuminate\Http\Request;
 
 class IncidentController extends Controller
@@ -12,7 +13,8 @@ class IncidentController extends Controller
      */
     public function index()
     {
-        //
+        $incidents = Incident::all();
+        return view('incidents.index', compact('incidents'));
     }
 
     /**
@@ -20,7 +22,8 @@ class IncidentController extends Controller
      */
     public function create()
     {
-        //
+        $projets = Projet::all();
+        return view('incidents.create', compact('projets'));
     }
 
     /**
@@ -28,15 +31,26 @@ class IncidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+
+            'lib' => 'required',
+            'description' => 'required',
+            'projet_id' => 'required',
+        ]);
+
+        Incident::create($validatedData);
+
+        return redirect()->route('incidents.index')->with('success', 'risk added successfully');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Incident $incident)
     {
-        //
+        $projets = Projet::all();
+        return view('incidents.show', compact('projets', 'incident'));
     }
 
     /**
@@ -44,7 +58,8 @@ class IncidentController extends Controller
      */
     public function edit(Incident $incident)
     {
-        //
+        $projets = Projet::all();
+        return view('incidents.edit', compact('projets', 'incident'));
     }
 
     /**
@@ -52,7 +67,20 @@ class IncidentController extends Controller
      */
     public function update(Request $request, Incident $incident)
     {
-        //
+        // $validatedData = $request->all([
+
+        //     'lib' => 'required',
+        //     'description' => 'required',
+        //     'user_id' => 'required',
+        //     'projet_id' => 'required',
+        // ]);
+        // dd($validatedData);
+        // echo ('e');
+        $input = $request->all();
+
+        $incident->update($input);
+        return redirect()->route('incidents.index')
+            ->with('success', 'incident UPDATE  succ');
     }
 
     /**
@@ -60,6 +88,8 @@ class IncidentController extends Controller
      */
     public function destroy(Incident $incident)
     {
-        //
+        $incident->delete();
+        return redirect()->route('incidents.index')
+            ->with('success', 'incident DELETED  succ');
     }
 }

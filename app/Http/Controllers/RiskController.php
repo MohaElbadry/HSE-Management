@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Projet;
 use App\Models\Risk;
+use App\Models\Utilisateur;
 use Illuminate\Http\Request;
 
 class RiskController extends Controller
@@ -12,7 +14,8 @@ class RiskController extends Controller
      */
     public function index()
     {
-        //
+        $risks = Risk::all();
+        return view('risks.index', compact('risks'));
     }
 
     /**
@@ -20,7 +23,9 @@ class RiskController extends Controller
      */
     public function create()
     {
-        //
+        $projets = Projet::all();
+        $utilisateurs = Utilisateur::all();
+        return view('risks.create', compact('projets', 'utilisateurs'));
     }
 
     /**
@@ -28,15 +33,28 @@ class RiskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+
+            'lib' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',//need to be removed
+            'projet_id' => 'required',
+        ]);
+
+        Risk::create($validatedData);
+
+        return redirect()->route('risks.index')->with('success', 'risk added successfully');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Risk $risk)
     {
-        //
+        $projets = Projet::all();
+        $utilisateurs = Utilisateur::all();
+        return view('risks.show', compact('projets', 'risk', 'utilisateurs'));
     }
 
     /**
@@ -44,7 +62,9 @@ class RiskController extends Controller
      */
     public function edit(Risk $risk)
     {
-        //
+        $projets = Projet::all();
+        $utilisateurs = Utilisateur::all();
+        return view('risks.edit', compact('projets', 'risk', 'utilisateurs'));
     }
 
     /**
@@ -52,7 +72,20 @@ class RiskController extends Controller
      */
     public function update(Request $request, Risk $risk)
     {
-        //
+        // $validatedData = $request->all([
+
+        //     'lib' => 'required',
+        //     'description' => 'required',
+        //     'user_id' => 'required',
+        //     'projet_id' => 'required',
+        // ]);
+        // dd($validatedData);
+        // echo ('e');
+        $input = $request->all();
+
+        $risk->update($input);
+        return redirect()->route('risks.index')
+            ->with('success', 'projet UPDATE  succ');
     }
 
     /**
@@ -60,6 +93,8 @@ class RiskController extends Controller
      */
     public function destroy(Risk $risk)
     {
-        //
+        $risk->delete();
+        return redirect()->route('risks.index')
+            ->with('success', 'projet DELETED  succ');
     }
 }

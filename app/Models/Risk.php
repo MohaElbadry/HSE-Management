@@ -13,6 +13,5 @@ class Risk extends Model
         'description',
         'user_id',
         'projet_id',
-
     ];
 }

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\EmergencieController;
+use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\RiskController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UtilisateurController;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +28,9 @@ Route::get('/', function () {
 Route::resource('utilisateurs', UtilisateurController::class);
 Route::resource('sites', SiteController::class);
 Route::resource('projets', ProjetController::class);
+Route::resource('risks', RiskController::class);
+Route::resource('incidents', IncidentController::class);
+Route::resource('emergencies', EmergencieController::class);
 
 
 
