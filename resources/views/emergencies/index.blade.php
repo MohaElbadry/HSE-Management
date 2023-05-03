@@ -1,4 +1,13 @@
-@extends('emergencies.layout')
+{{-- @extends('emergencies.layout') --}}
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite('resources/css/app.css')
+</head>
+<body>
 
 @section('content')
     <br>
@@ -36,7 +45,6 @@
                 </tr>
             </thead>
 
-
             <tbody class="table-group-divider">
                 @foreach ($emergencies as $item)
                     <tr class="table-primary">
@@ -67,5 +75,7 @@
     </div>
 
 
+    </body>
+</html>
 
-@endsection
+{{-- @endsection --}}

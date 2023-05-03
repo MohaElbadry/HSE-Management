@@ -56,10 +56,9 @@ class EmergencieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Emergencie $emergencie)
     {
-        $emergencie = Emergencie::find($id);
-
+        // dd($emergencie);
         $projets = Projet::all();
         return view('emergencies.edit', compact('projets', 'emergencie'));
     }

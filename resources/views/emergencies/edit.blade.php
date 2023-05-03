@@ -6,7 +6,7 @@
             <a class="btn btn-primary" href="{{ route('emergencies.index') }}">All products</a>
         </div>
 
-        <form action="{{ route('emergencies.edit', $emergencie->id) }}" method="POST">
+        <form action="{{ route('emergencies.edit', ['emergency'=>$emergencie]$emergencie) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">

@@ -15,7 +15,8 @@ class RiskController extends Controller
     public function index()
     {
         $risks = Risk::all();
-        return view('risks.index', compact('risks'));
+        $projets = Projet::all();
+        return view('risks.index', compact('risks', 'projets'));
     }
 
     /**
@@ -37,7 +38,7 @@ class RiskController extends Controller
 
             'lib' => 'required',
             'description' => 'required',
-            'user_id' => 'required',//need to be removed
+            'user_id' => 'required', //need to be removed
             'projet_id' => 'required',
         ]);
 
@@ -55,6 +56,7 @@ class RiskController extends Controller
         $projets = Projet::all();
         $utilisateurs = Utilisateur::all();
         return view('risks.show', compact('projets', 'risk', 'utilisateurs'));
+
     }
 
     /**
