@@ -75,8 +75,13 @@ class UtilisateurController extends Controller
     public function destroy(Utilisateur $utilisateur)
     {
 
-        $utilisateur->delete();
-        return redirect()->route('utilisateurs.index')
-            ->with('success', 'utilisateurs DELETED  succ');
+        try {
+            $utilisateur->delete();
+            return redirect()->route('utilisateurs.index')
+                ->with('success', 'utilisateurs DELETED  succ');
+        } catch (\Illuminate\Database\QueryException) {
+            return redirect()->route('utilisateurs.index')
+                ->with('ERRO', 'Cannot delete this user because they have associated data in another table.');
+        }
     }
 }

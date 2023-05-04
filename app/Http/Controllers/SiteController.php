@@ -79,10 +79,10 @@ class SiteController extends Controller
      */
     public function update(Request $request, Site $site)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'description' => 'required'
+        // ]);
         $input = $request->all();
         $site->update($input);
         return redirect()->route('sites.index')
