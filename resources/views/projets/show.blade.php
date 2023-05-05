@@ -3,6 +3,7 @@
 @section('content')
 
 
+
 <div class="flex items-center ">
   <h1 class="w-full font-extrabold text-3xl text-gray-900 p-3  pl-10 bg-white ">Show Page</h1>
   <div class="p-4   bg-white ">

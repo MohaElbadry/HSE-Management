@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sensibilisations', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('risks', function (Blueprint $table) {
             $table->id();
             $table->string('lib');
-            $table->string('description');
-            $table->foreignId('user_id')->constrained('utilisateurs');
+            $table->text('description');
             $table->foreignId('projet_id')->constrained('projets');
             $table->timestamps();
         });

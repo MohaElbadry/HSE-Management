@@ -11,7 +11,6 @@ class Risk extends Model
     protected $fillable = [
         'lib',
         'description',
-        'user_id',
         'projet_id',
     ];
 }

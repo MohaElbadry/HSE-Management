@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmergencieController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\ProjetController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UtilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use League\CommonMark\Node\Block\Document;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('php');
 });
 
 
@@ -31,7 +33,9 @@ Route::resource('projets', ProjetController::class);
 Route::resource('risks', RiskController::class);
 Route::resource('incidents', IncidentController::class);
 Route::resource('emergencies', EmergencieController::class);
+Route::get('/documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
 
+Route::resource('documents', DocumentController::class);
 
 
 

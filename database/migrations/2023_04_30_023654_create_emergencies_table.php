@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('emergencies', function (Blueprint $table) {
             $table->id();
             $table->string('lib');
-            $table->string('description');
+            $table->text('description');
             $table->foreignId('projet_id')->constrained('projets');
             $table->timestamps();
         });
