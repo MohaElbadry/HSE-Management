@@ -38,7 +38,6 @@ class RiskController extends Controller
 
             'lib' => 'required',
             'description' => 'required',
-            'user_id' => 'required', //need to be removed
             'projet_id' => 'required',
         ]);
 
@@ -56,7 +55,6 @@ class RiskController extends Controller
         $projets = Projet::all();
         $utilisateurs = Utilisateur::all();
         return view('risks.show', compact('projets', 'risk', 'utilisateurs'));
-
     }
 
     /**

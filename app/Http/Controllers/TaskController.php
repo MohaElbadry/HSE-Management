@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Projet;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $projets = Projet::all();
+        $tasks = Task::all();
+        return view('tasks.index', compact('tasks', 'projets'));
     }
 
     /**
@@ -20,7 +23,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $projets = Projet::all();
+        return view('tasks.create', compact('projets'));
     }
 
     /**
@@ -28,7 +32,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'lib' => 'required',
+            'description' => 'required',
+            'projet_id' => 'required',
+            'task_start' => 'required',
+            'task_end' => 'required'
+        ]);
+        Task::create($validatedData);
+        return redirect()->route('tasks.index')->with('success', 'risk added successfully');
     }
 
     /**
@@ -36,7 +49,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $projets = Projet::all();
+        return view('risks.show', compact('projets', 'task'));
     }
 
     /**
@@ -44,7 +58,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -52,7 +66,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $input = $request->all();
+        $task->update($input);
+        return redirect()->route('tasks.index')
+            ->with('success', 'task UPDATE  succ');
     }
 
     /**
@@ -60,6 +77,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('tasks.index')
+            ->with('success', 'task DELETED  succ');
     }
 }

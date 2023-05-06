@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('lib');
             $table->string('description');
             $table->foreignId('projet_id')->constrained('projets');
+            $table->date('task_start');
+            $table->date('task_end');
             $table->timestamps();
         });
     }

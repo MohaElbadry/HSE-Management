@@ -12,5 +12,7 @@ class Task extends Model
         'lib',
         'description',
         'projet_id',
+        'task_start',
+        'task_end'
     ];
 }
