@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Projet;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Validator;
 
 class TaskController extends Controller
 {
@@ -15,6 +16,14 @@ class TaskController extends Controller
     {
         $projets = Projet::all();
         $tasks = Task::all();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'projets' => $projets,
+                'tasks' => $tasks
+            ]);
+        }
+
         return view('tasks.index', compact('tasks', 'projets'));
     }
 
@@ -24,6 +33,11 @@ class TaskController extends Controller
     public function create()
     {
         $projets = Projet::all();
+
+        if (request()->wantsJson()) {
+            return response()->json($projets);
+        }
+
         return view('tasks.create', compact('projets'));
     }
 
@@ -32,7 +46,6 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $validatedData = $request->validate([
             'lib' => 'required',
             'description' => 'required',
@@ -40,8 +53,14 @@ class TaskController extends Controller
             'task_start' => 'required',
             'task_end' => 'required'
         ]);
+
         Task::create($validatedData);
-        return redirect()->route('tasks.index')->with('success', 'risk added successfully');
+
+        if (request()->wantsJson()) {
+            return response()->json(['success' => 'Task added successfully']);
+        }
+
+        return redirect()->route('tasks.index')->with('success', 'Task added successfully');
     }
 
     /**
@@ -50,6 +69,11 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         $projets = Projet::all();
+
+        if (request()->wantsJson()) {
+            return response()->json(compact('projets', 'task'));
+        }
+
         return view('risks.show', compact('projets', 'task'));
     }
 
@@ -58,6 +82,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
+        if (request()->wantsJson()) {
+            return response()->json(compact('task'));
+        }
+
         return view('tasks.edit', compact('task'));
     }
 
@@ -68,8 +96,12 @@ class TaskController extends Controller
     {
         $input = $request->all();
         $task->update($input);
-        return redirect()->route('tasks.index')
-            ->with('success', 'task UPDATE  succ');
+
+        if (request()->wantsJson()) {
+            return response()->json(['success' => 'Task updated successfully']);
+        }
+
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
 
     /**
@@ -78,7 +110,11 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('tasks.index')
-            ->with('success', 'task DELETED  succ');
+
+        if (request()->wantsJson()) {
+            return response()->json(['success' => 'Task deleted successfully']);
+        }
+
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
     }
 }

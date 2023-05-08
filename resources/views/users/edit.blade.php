@@ -1,4 +1,4 @@
-@extends('utilisateurs.layout')
+@extends('users.layout')
 
 @section('content')
 
@@ -7,7 +7,7 @@
     <!-- component -->
 
     <form class="mt-8 w-fit h-fit space-y-6 bg-gray-100 p-4 border-gray-200 shadow-xl  rounded-xl "
-        action="{{ route('utilisateurs.update', $utilisateur->id) }}" method="POST">
+        action="{{ route('users.update', $user) }}" method="POST">
         @csrf
         @method('PUT')
         <div>
@@ -26,7 +26,7 @@
             <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">Name</label>
             <input
                 class=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
-                name="name" placeholder="Libellet" value="{{ $utilisateur->name }}">
+                name="name" placeholder="Libellet" value="{{ $user->name }}">
         </div>
         <div class="mt-8 content-center">
             <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
@@ -34,16 +34,16 @@
             </label>
             <input
                 class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
-                name="email" type="email" placeholder="Enter The Description" value="{{ $utilisateur->email }}">
+                name="email" type="email" placeholder="Enter The Description" value="{{ $user->email }}">
         </div>
         <div class="mt-8 content-center">
             <label class="ml-3 text-sm block font-bold text-gray-700 tracking-wide">
                 Role
             </label>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="role">
-                <option value="U" {{ $utilisateur->role == 'U' ? 'selected' : '' }}>User</option>
-                <option value="A" {{ $utilisateur->role == 'A' ? 'selected' : '' }}>Admin</option>
-                <option value="T" {{ $utilisateur->role == 'T' ? 'selected' : '' }}>Technician</option>
+                <option value="U" {{ $user->role == 'U' ? 'selected' : '' }}>User</option>
+                <option value="A" {{ $user->role == 'A' ? 'selected' : '' }}>Admin</option>
+                <option value="T" {{ $user->role == 'T' ? 'selected' : '' }}>Technician</option>
 
             </select>
         </div>

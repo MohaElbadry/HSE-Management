@@ -14,17 +14,17 @@
             class="sidebar w-48 -translate-x-full transform bg-white p-4 transition-transform duration-150 ease-in md:translate-x-0 md:shadow-md">
             <div class="my-4">
                 <!-- Left side NavBar -->
-        
+
                 <div>
                     <!-- App Logo -->
-        
+
                     <img class="shadow-white bg" src=" {{ asset('1.png') }} " alt="">
-        
+
                 </div>
-        
+
                 <ul class="mt-2 text-gray-700 dark:text-gray-400 capitalize">
                     <!-- Links -->
-        
+
                     <li class="mt-3 p-2 text-blue-600 dark:text-blue-300 rounded-lg">
                         <a href="/projets" class=" flex flex-col items-center">
                             <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -35,9 +35,9 @@
                             </svg>
                             <span class="text-xs mt-2">dashBoard</span>
                         </a>
-        
+
                     </li>
-        
+
                     <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
               				rounded-lg">
                         <a href="/risks" class=" flex flex-col items-center">
@@ -51,9 +51,9 @@
                             </svg>
                             <span class="text-xs mt-2">messages</span>
                         </a>
-        
+
                     </li>
-        
+
                     <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
               				rounded-lg">
                         <a href="/sites" class=" flex flex-col items-center">
@@ -66,12 +66,12 @@
                             </svg>
                             <span class="text-xs mt-2">earnings</span>
                         </a>
-        
+
                     </li>
-        
+
                     <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
               				rounded-lg">
-                        <a href="/utilisateurs" class=" flex flex-col items-center">
+                        <a href="/users" class=" flex flex-col items-center">
                             <svg class="fill-current h-5 w-5" viewBox="0 0 512 512">
                                 <path d="M505 442.7L405.3
               							343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7
@@ -85,9 +85,9 @@
                             </svg>
                             <span class="text-xs mt-2">jobs</span>
                         </a>
-        
+
                     </li>
-        
+
                     <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
               				rounded-lg">
                         <a href="#" class=" flex flex-col items-center">
@@ -100,9 +100,9 @@
                             </svg>
                             <span class="text-xs mt-2">schedule</span>
                         </a>
-        
+
                     </li>
-        
+
                     <li class="mt-3 p-2 hover:text-blue-600 rounded-lg">
                         <a href="#" class=" flex flex-col items-center">
                             <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -143,7 +143,7 @@
                     </div>
                     <div class="mt-8 content-center">
                         <p class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
-                            User
+                            PROJET
                         </p>
                         <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="projet_id">
                             @foreach ($projets as $projet)
@@ -151,18 +151,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mt-8 content-center">
-                        {{-- ID_ite --}}
-                        <p class="ml-3 text-sm font-bold text-gray-700 ">
-                            Projet
-                        </p>
 
-                        <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="user_id">
-                            @foreach ($utilisateurs as $utilisateur)
-                            <option value="{{ $utilisateur->id }}">{{ $utilisateur->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <div class="flex items-center justify-center">
                         <button type="submit"

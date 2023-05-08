@@ -5,24 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Emergencie;
 use App\Models\Projet;
 use Illuminate\Http\Request;
+use Validator;
 
 class EmergencieController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $emergencies = Emergencie::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'emergencies' => $emergencies
+            ]);
+        }
+
         return view('emergencies.index', compact('emergencies'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $projets = Projet::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'projets' => $projets
+            ]);
+        }
+
         return view('emergencies.create', compact('projets'));
     }
 
@@ -31,8 +46,8 @@ class EmergencieController extends Controller
      */
     public function store(Request $request)
     {
+        var_dump($request->all());
         $validatedData = $request->validate([
-
             'lib' => 'required',
             'description' => 'required',
             'projet_id' => 'required',
@@ -40,27 +55,45 @@ class EmergencieController extends Controller
 
         Emergencie::create($validatedData);
 
-        return redirect()->route('emergencies.index')->with('success', 'risk added successfully');
-    }
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'Emergency added successfully']);
+        }
 
+        return redirect()->route('emergencies.index')->with('success', 'Emergency added successfully');
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(Emergencie $emergencie)
+    public function show(Request $request, Emergencie $emergencie)
     {
         $projets = Projet::all();
-        return view('emergencies.show', compact('projets', 'emergencie'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'emergencie' => $emergencie,
+                'projets' => $projets
+            ]);
+        }
+        var_dump($emergencie);
+        return view('emergencies.show', compact('emergencie', 'projets'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Emergencie $emergencie)
+    public function edit(Request $request, Emergencie $emergencie)
     {
-        // dd($emergencie);
         $projets = Projet::all();
-        return view('emergencies.edit', compact('projets', 'emergencie'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'emergencie' => $emergencie,
+                'projets' => $projets
+            ]);
+        }
+
+        return view('emergencies.edit', compact('emergencie', 'projets'));
     }
 
     /**
@@ -68,19 +101,33 @@ class EmergencieController extends Controller
      */
     public function update(Request $request, Emergencie $emergencie)
     {
-        $input = $request->all();
-        $emergencie->update($input);
-        return redirect()->route('emergencies.index')
-            ->with('success', 'emergencies UPDATE  succ');
+        $validatedData = $request->validate([
+            'lib' => 'required',
+            'description' => 'required',
+            'projet_id' => 'required',
+        ]);
+
+        $emergencie->update($validatedData);
+
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'Emergency updated successfully']);
+        }
+
+        return redirect()->route('emergencies.index')->with('success', 'Emergency updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Emergencie $emergencie)
+    public function destroy(Request $request, Emergencie $emergencie)
     {
         $emergencie->delete();
+
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'emergencies deleted successfully']);
+        }
+
         return redirect()->route('emergencies.index')
-            ->with('success', 'incident DELETED  succ');
+            ->with('success', 'emergencies deleted successfully');
     }
 }

@@ -67,15 +67,7 @@ class IncidentController extends Controller
      */
     public function update(Request $request, Incident $incident)
     {
-        // $validatedData = $request->all([
 
-        //     'lib' => 'required',
-        //     'description' => 'required',
-        //     'user_id' => 'required',
-        //     'projet_id' => 'required',
-        // ]);
-        // dd($validatedData);
-        // echo ('e');
         $input = $request->all();
 
         $incident->update($input);

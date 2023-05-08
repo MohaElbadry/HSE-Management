@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projet;
 use App\Models\Site;
-use App\Models\Utilisateur;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Composer;
 
@@ -25,8 +25,8 @@ class ProjetController extends Controller
     public function create()
     {
         $sites = Site::all();
-        $utilisateurs = Utilisateur::all();
-        return view('projets.create', compact('sites', 'utilisateurs'));
+        $users = User::all();
+        return view('projets.create', compact('sites', 'users'));
     }
 
     /**
@@ -54,8 +54,8 @@ class ProjetController extends Controller
     public function show(Projet $projet)
     {
         $sites = Site::all();
-        $utilisateurs = Utilisateur::all();
-        return view('projets.show', compact('projet', 'sites', 'utilisateurs'));
+        $users = user::all();
+        return view('projets.show', compact('projet', 'sites', 'users'));
     }
 
     /**
@@ -64,8 +64,8 @@ class ProjetController extends Controller
     public function edit(Projet $projet)
     {
         $sites = Site::all();
-        $utilisateurs = Utilisateur::all();
-        return view('projets.edit', compact('projet', 'sites', 'utilisateurs'));
+        $users = user::all();
+        return view('projets.edit', compact('projet', 'sites', 'users'));
     }
 
     /**

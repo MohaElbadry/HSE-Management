@@ -1,4 +1,4 @@
-@extends('utilisateurs.layout')
+@extends('users.layout')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <div class="bg-white px-8 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div>
-                <h2 class="text-gray-600 font-semibold">Utilisateurs </h2>
+                <h2 class="text-gray-600 font-semibold">users </h2>
                 @if ($message = Session::get('success'))
                 <div class="max-w-lg mx-auto">
                     <div class="flex bg-blue-100 rounded-lg p-4 mb-4 text-sm text-blue-700" role="alert">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 @endif
-                <a class="" href="/utilisateurs/create">
+                <a class="" href="/users/create">
                     <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
                 </a>
             </div>
@@ -71,7 +71,7 @@
                         </thead>
                         <tbody>
                             <!-- list des ....!-->
-                            @foreach ($utilisateurs as $item)
+                            @foreach ($users as $item)
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center">
@@ -102,15 +102,15 @@
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span class="relative  px-3 py-1 flex font-semibold text-green-900 leading-tight">
 
-                                        <a class="relative" href="{{ route('utilisateurs.show', $item->id) }}">
+                                        <a class="relative" href="{{ route('users.show', $item->id) }}">
                                             <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/oeil2.png') }} "
                                                 alt="trach">
                                         </a>
-                                        <a class="relative" href="{{ route('utilisateurs.edit', $item->id) }}">
+                                        <a class="relative" href="{{ route('users.edit', $item->id) }}">
                                             <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} "
                                                 alt="EDITe">
                                         </a>
-                                        <form action="{{ route('utilisateurs.destroy', $item->id) }}" method="post">
+                                        <form action="{{ route('users.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="relative" type="submit">

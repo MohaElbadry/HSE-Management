@@ -1,6 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EmergencieController;
+use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\RiskController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PassportController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('register', [PassportController::class, 'register']);
+Route::post('login', [PassportController::class, 'login']);
+
+
+
+Route::middleware(['auth:api'])->group(function () {
+
+    Route::get('userinfo', [PassportController::class, 'userinfo']);
+    Route::resource('sites', SiteController::class)->only(['store', 'show', 'update', 'destroy']);
+    Route::resource('projets', ProjetController::class)->only(['index', 'show', 'update', 'destroy']);
+    Route::resource('risks', RiskController::class);
+    Route::resource('incidents', IncidentController::class);
+    Route::resource('emergencies', EmergencieController::class);
+    Route::resource('documents', DocumentController::class);
+    Route::resource('tasks', TaskController::class)->only(['index']);
 });

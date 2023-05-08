@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Utilisateur;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class UtilisateurController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $utilisateurs = Utilisateur::all();
-        return view('utilisateurs.index', compact('utilisateurs'));
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -21,7 +21,7 @@ class UtilisateurController extends Controller
      */
     public function create()
     {
-        return view('utilisateurs.create');
+        return view('users.create');
     }
 
     /**
@@ -37,50 +37,50 @@ class UtilisateurController extends Controller
             'password' => 'required'
         ]);
         $input = $request->all();
-        Utilisateur::create($input);
-        return redirect()->route('utilisateurs.index')
-            ->with('success', 'utilisateurs Added succ');
+        User::create($input);
+        return redirect()->route('users.index')
+            ->with('success', 'users Added succ');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Utilisateur $utilisateur)
+    public function show(User $user)
     {
-        return view('utilisateurs.show', compact('utilisateur'));
+        return view('users.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Utilisateur $utilisateur)
+    public function edit(User $user)
     {
-        return view('utilisateurs.edit', compact('utilisateur'));
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Utilisateur $utilisateur)
+    public function update(Request $request, User $user)
     {
         $input = $request->all();
-        $utilisateur->update($input);
-        return redirect()->route('utilisateurs.index')
-            ->with('success', 'utilisateurs UPDATE  succ');
+        $user->update($input);
+        return redirect()->route('users.index')
+            ->with('success', 'users UPDATE  succ');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Utilisateur $utilisateur)
+    public function destroy(User $user)
     {
 
         try {
-            $utilisateur->delete();
-            return redirect()->route('utilisateurs.index')
-                ->with('success', 'utilisateurs DELETED  succ');
+            $user->delete();
+            return redirect()->route('users.index')
+                ->with('success', 'users DELETED  succ');
         } catch (\Illuminate\Database\QueryException) {
-            return redirect()->route('utilisateurs.index')
+            return redirect()->route('users.index')
                 ->with('ERRO', 'Cannot delete this user because they have associated data in another table.');
         }
     }

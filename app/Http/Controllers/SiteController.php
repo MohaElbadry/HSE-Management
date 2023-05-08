@@ -15,6 +15,12 @@ class SiteController extends Controller
     public function index()
     {
         $sites = Site::all();
+
+        // Check if the request wants JSON response
+        if (request()->wantsJson()) {
+            return response()->json($sites);
+        }
+
         return view('sites.index', compact('sites'));
     }
 
@@ -37,15 +43,18 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
-        ]);
+        // Validation logic
+
         $input = $request->all();
         Site::create($input);
+
+        // Check if the request wants JSON response
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Sites added successfully']);
+        }
+
         return redirect()->route('sites.index')
-            ->with('success', 'Sites Added succ');
+            ->with('success', 'Sites added successfully');
     }
 
     /**
@@ -56,6 +65,11 @@ class SiteController extends Controller
      */
     public function show(Site $site)
     {
+        // Check if the request wants JSON response
+        if (request()->wantsJson()) {
+            return response()->json($site);
+        }
+
         return view('sites.show', compact('site'));
     }
 
@@ -79,14 +93,18 @@ class SiteController extends Controller
      */
     public function update(Request $request, Site $site)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'description' => 'required'
-        // ]);
+        // Validation logic
+
         $input = $request->all();
         $site->update($input);
+
+        // Check if the request wants JSON response
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Sites updated successfully']);
+        }
+
         return redirect()->route('sites.index')
-            ->with('success', 'Sites UPDATE  succ');
+            ->with('success', 'Sites updated successfully');
     }
 
     /**
@@ -98,7 +116,13 @@ class SiteController extends Controller
     public function destroy(Site $site)
     {
         $site->delete();
+
+        // Check if the request wants JSON response
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Sites deleted successfully']);
+        }
+
         return redirect()->route('sites.index')
-            ->with('success', 'Sites DELETED  succ');
+            ->with('success', 'Sites deleted successfully');
     }
 }

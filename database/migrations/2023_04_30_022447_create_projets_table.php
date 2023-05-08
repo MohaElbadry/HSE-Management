@@ -17,7 +17,7 @@ class CreateProjetsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
-            $table->foreignId('user_id')->constrained('utilisateurs');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('site_id')->constrained('sites');
             //***** */
             // $table->unsignedBigInteger('user_id');

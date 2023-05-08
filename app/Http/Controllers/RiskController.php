@@ -4,29 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Models\Projet;
 use App\Models\Risk;
-use App\Models\Utilisateur;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class RiskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $risks = Risk::all();
         $projets = Projet::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'risks' => $risks,
+                'projets' => $projets
+            ]);
+        }
+
         return view('risks.index', compact('risks', 'projets'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $projets = Projet::all();
-        $utilisateurs = Utilisateur::all();
-        return view('risks.create', compact('projets', 'utilisateurs'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'projets' => $projets,
+            ]);
+        }
+
+        return view('risks.create', compact('projets'));
     }
 
     /**
@@ -35,7 +50,6 @@ class RiskController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-
             'lib' => 'required',
             'description' => 'required',
             'projet_id' => 'required',
@@ -43,28 +57,45 @@ class RiskController extends Controller
 
         Risk::create($validatedData);
 
-        return redirect()->route('risks.index')->with('success', 'risk added successfully');
-    }
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'Risk added successfully']);
+        }
 
+        return redirect()->route('risks.index')->with('success', 'Risk added successfully');
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(Risk $risk)
+    public function show(Request $request, Risk $risk)
     {
         $projets = Projet::all();
-        $utilisateurs = Utilisateur::all();
-        return view('risks.show', compact('projets', 'risk', 'utilisateurs'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'risk' => $risk,
+                'projets' => $projets,
+            ]);
+        }
+
+        return view('risks.show', compact('risk', 'projets'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Risk $risk)
+    public function edit(Request $request, Risk $risk)
     {
         $projets = Projet::all();
-        $utilisateurs = Utilisateur::all();
-        return view('risks.edit', compact('projets', 'risk', 'utilisateurs'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'risk' => $risk,
+                'projets' => $projets,
+            ]);
+        }
+
+        return view('risks.edit', compact('risk', 'projets'));
     }
 
     /**
@@ -72,29 +103,33 @@ class RiskController extends Controller
      */
     public function update(Request $request, Risk $risk)
     {
-        // $validatedData = $request->all([
+        $validatedData = $request->validate([
+            'lib' => 'required',
+            'description' => 'required',
+            'projet_id' => 'required',
+        ]);
 
-        //     'lib' => 'required',
-        //     'description' => 'required',
-        //     'user_id' => 'required',
-        //     'projet_id' => 'required',
-        // ]);
-        // dd($validatedData);
-        // echo ('e');
-        $input = $request->all();
+        $risk->update($validatedData);
 
-        $risk->update($input);
-        return redirect()->route('risks.index')
-            ->with('success', 'projet UPDATE  succ');
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'Risk updated successfully']);
+        }
+
+        return redirect()->route('risks.index')->with('success', 'Risk updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Risk $risk)
+    public function destroy(Request $request, Risk $risk)
     {
         $risk->delete();
+
+        if ($request()->wantsJson()) {
+            return response()->json(['message' => 'RISK deleted successfully']);
+        }
+
         return redirect()->route('risks.index')
-            ->with('success', 'projet DELETED  succ');
+            ->with('success', 'Sites deleted successfully');
     }
 }

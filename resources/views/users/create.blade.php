@@ -1,11 +1,11 @@
-@extends('utilisateurs.layout')
+@extends('users.layout')
 
 @section('content')
 <div class="flex h-full  pt-3 items-center justify-center bg-white text-center text-5xl font-bold shadow-md">
     <!-- component -->
     <!-- component -->
     @csrf
-    <form class="mt-8 space-y-6 bg-gray-200 p-4 rounded-xl border-black" action="{{ route('utilisateurs.store') }}"
+    <form class="mt-8 space-y-6 bg-gray-200 p-4 rounded-xl border-black" action="{{ route('users.store') }}"
         method="POST">
         @csrf
         <div>

@@ -71,7 +71,7 @@
 
           <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
           				rounded-lg">
-            <a href="/utilisateurs" class=" flex flex-col items-center">
+            <a href="/users" class=" flex flex-col items-center">
               <svg class="fill-current h-5 w-5" viewBox="0 0 512 512">
                 <path d="M505 442.7L405.3
           							343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7

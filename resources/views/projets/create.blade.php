@@ -43,10 +43,11 @@
         </div>
         <div class="mt-2 content-center">
             <p class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
-                User
+                Technicien
             </p>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="user_id">
-                @foreach($utilisateurs as $user)
+                @foreach($users as $user)
+                {{-- //TODO:add an condition fo only thecnicien who can make a projetc --}}
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
             </select>

@@ -54,7 +54,7 @@
                 User
             </p>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="user_id">
-                @foreach ($utilisateurs as $item)
+                @foreach ($users as $item)
                 <option value="{{ $item->id }}" {{ $item->id == $projet->projet_id ? 'selected' : '' }}>
                     {{ $item->name }}</option>
                 @endforeach
