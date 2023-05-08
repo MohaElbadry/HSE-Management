@@ -9,48 +9,22 @@ import { API_BASE_URL } from "../IP.js";
 export default function Pat_Home_Screen({ navigation }) {
     const [info, setInfo] = useState([]);
 
-    useEffect(() => {
-        const fetchName = async () => {
-            try {
-                const response = await axios.get(
-                    `${API_BASE_URL}/api/tasks/`
-                );
-                const data = response.data;
-                console.log(data);
-                setInfo(data.nom);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+    // useEffect(() => {
 
-        const fetchDataDoctor = async () => {
-            try {
-                const response = await axios.get(
-                    `${API_BASE_URL}/doctor/readone/3`
-                );
-                const data = response.data;
-                setDoc(data);
-                fetchspecialiteId(data.specialiteId);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+    //     const fetchDataDoctor = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 `${API_BASE_URL}/api/tasks`
+    //             );
+    //             const data = response.data;
+    //             consol.log(data);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
 
-        const fetchspecialiteId = async (specialiteId) => {
-            try {
-                const response = await axios.get(
-                    `${API_BASE_URL}/specialite/readone/${specialiteId}`
-                );
-
-                setSpecialite(response.data.libelle);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchName();
-        fetchDataDoctor();
-    }, []);
+    //     fetchDataDoctor();
+    // }, []);
 
     return (
         <View
@@ -65,9 +39,7 @@ export default function Pat_Home_Screen({ navigation }) {
                 </Text>
                 <Text className="mx-4 mt-6 text-3xl  text-[#00916E]">
                     Hello{" "}
-                    <Text className="mx-4 mt-6 text-3xl  text-[#ababab]">
-                        {name}
-                    </Text>
+                    <Text className="mx-4 mt-6 text-3xl  text-[#ababab]"></Text>
                 </Text>
                 <Text className="mx-4 text-4xl font-bold  text-[#002B20]">
                     Explore
@@ -107,15 +79,9 @@ export default function Pat_Home_Screen({ navigation }) {
                         className="m-2 h-16 w-16 self-start rounded-lg drop-shadow-xl "
                     />
                     <View className="ml-3 flex flex-col ">
-                        <Text className="mt-2 text-xl font-bold ">
-                            Dr. {Doc.nom + " " + Doc.prenom}
-                        </Text>
-                        <Text className="w-44 text-xs text-gray-400">
-                            {specialite}
-                        </Text>
-                        <Text className="w-44 text-xs text-gray-400">
-                            {Doc.telephone}
-                        </Text>
+                        <Text className="mt-2 text-xl font-bold "></Text>
+                        <Text className="w-44 text-xs text-gray-400"></Text>
+                        <Text className="w-44 text-xs text-gray-400"></Text>
                     </View>
                 </View>
             </View>

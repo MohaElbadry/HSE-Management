@@ -7,16 +7,17 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
 
-export default function Doc_Login({ navigation }) {
+import axios from "axios";
+import { API_BASE_URL } from "../IP";
+
+export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/tasks`, {
+            const response = await axios.post(`${API_BASE_URL}/api/login`, {
                 email,
                 password,
             });

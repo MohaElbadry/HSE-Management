@@ -2,8 +2,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
-import Doc_Login from "./screens/Doc_Login";
-import Pat_Home_Screen from "./screens/Pat_Home_Screen";
+import Login from "./screens/Login";
+import Home_Screen from "./screens/Home_Screen";
 
 const config = {
     animation: "spring",
@@ -26,8 +26,11 @@ export default function App() {
                 screenOptions={{ headerShown: false }}
             >
                 <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="Doc_Login" component={Doc_Login} />
-                <Stack.Screen name="Doc_Login" component={Pat_Home_Screen} />
+                <Stack.Screen name="Doc_Login" component={Login} />
+                <Stack.Screen
+                    name="Pat_Home_Screen"
+                    component={Home_Screen}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

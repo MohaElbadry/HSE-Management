@@ -1,6 +1,27 @@
 import { Image, Text, View, TouchableOpacity } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { API_BASE_URL } from "../IP";
+
+
 export default function Home({ navigation }) {
+    useEffect(() => {
+        const fetchDataDoctor = async () => {
+            try {
+                const response = await axios.get(`${API_BASE_URL}/api/tasks`);
+                const data = response.data;
+                console.log(data);
+                await AsyncStorage.setItem("token", "token");
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchDataDoctor();
+    }, []);
+
     return (
         <View
             className="mt-4 flex-1 flex-col  items-center justify-center "
