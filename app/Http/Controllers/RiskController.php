@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Projet;
 use App\Models\Risk;
-use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf as Pdf;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\DB;
 
 class RiskController extends Controller
 {
@@ -131,5 +131,25 @@ class RiskController extends Controller
 
         return redirect()->route('risks.index')
             ->with('success', 'Sites deleted successfully');
+    }
+
+
+    /**
+     * PDF Generator
+     */
+
+    public function pdf()
+    {
+        $risks = DB::table('risks')
+            ->join('projets', 'risks.projet_id', '=', 'projets.id')
+            ->select('risks.*', 'projets.name as projet_name')
+            ->get();
+        // $projets = Projet::all();
+        view()->share('risks', $risks);
+
+
+        $pdf = Pdf::loadView('risks.pdf_view');
+
+        return $pdf->download('Risks_Rapport_pdf_' . time() . '.pdf');
     }
 }

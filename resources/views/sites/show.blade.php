@@ -4,7 +4,7 @@
 
 
 
-<div class="flex h-full w-1/3 pt-3 justify-center bg-white text-center text-5xl font-bold shadow-md">
+<div class="flex h-full w-full  pt-3 justify-center bg-white text-center text-5xl font-bold shadow-md">
   <!-- component -->
   <!-- component -->
   <div class="max-w-md py-4 h-1/3 w-2/3 px-8 bg-cyan-200 shadow-lg rounded-lg my-20">

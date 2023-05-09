@@ -11,18 +11,34 @@ class IncidentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $incidents = Incident::all();
-        return view('incidents.index', compact('incidents'));
+        $projets = Projet::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'incidents' => $incidents,
+                'projets' => $projets
+            ]);
+        }
+
+        return view('incidents.index', compact('incidents', 'projets'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $projets = Projet::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'projets' => $projets,
+            ]);
+        }
+
         return view('incidents.create', compact('projets'));
     }
 
@@ -32,7 +48,6 @@ class IncidentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-
             'lib' => 'required',
             'description' => 'required',
             'projet_id' => 'required',
@@ -40,26 +55,45 @@ class IncidentController extends Controller
 
         Incident::create($validatedData);
 
-        return redirect()->route('incidents.index')->with('success', 'risk added successfully');
-    }
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'Incident added successfully']);
+        }
 
+        return redirect()->route('incidents.index')->with('success', 'Incident added successfully');
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(Incident $incident)
+    public function show(Request $request, Incident $incident)
     {
         $projets = Projet::all();
-        return view('incidents.show', compact('projets', 'incident'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'incident' => $incident,
+                'projets' => $projets,
+            ]);
+        }
+
+        return view('incidents.show', compact('incident', 'projets'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Incident $incident)
+    public function edit(Request $request, Incident $incident)
     {
         $projets = Projet::all();
-        return view('incidents.edit', compact('projets', 'incident'));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'incident' => $incident,
+                'projets' => $projets,
+            ]);
+        }
+
+        return view('incidents.edit', compact('incident', 'projets'));
     }
 
     /**
@@ -67,21 +101,32 @@ class IncidentController extends Controller
      */
     public function update(Request $request, Incident $incident)
     {
+        // dd($request->all());
+        // $validatedData = $request->validate([
+        //     'lib' => 'required',
+        //     'description' => 'required',
+        //     'projet_id' => 'required',
+        // ]);
 
-        $input = $request->all();
+        $incident->update($request->all());
 
-        $incident->update($input);
-        return redirect()->route('incidents.index')
-            ->with('success', 'incident UPDATE  succ');
+        if ($request->wantsJson()) {
+            return response()->json(['success' => 'Incident updated successfully']);
+        }
+
+        return redirect()->route('incidents.index')->with('success', 'Incident updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Incident $incident)
+    public function destroy(Request $request, Incident $incident)
     {
         $incident->delete();
+
+
+
         return redirect()->route('incidents.index')
-            ->with('success', 'incident DELETED  succ');
+            ->with('success', 'projet UPDATE  succ');
     }
 }

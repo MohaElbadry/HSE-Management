@@ -77,7 +77,7 @@
                             </a>
                         </span>
 
-                        <form class="absolute scale-50 hover:scale-125 hover:bg-red-400 bottom-0 right-1 p-1"
+                        <form class="absolute scale-50 hover:scale-125  bottom-0 right-1 p-1"
                             action="{{ route('tasks.destroy', $i->id) }}" method="post">
                             @csrf
                             @method('DELETE')

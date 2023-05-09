@@ -8,7 +8,6 @@ use App\Http\Controllers\RiskController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UtilisateurController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Node\Block\Document;
@@ -37,6 +36,12 @@ Route::resource('incidents', IncidentController::class);
 Route::resource('emergencies', EmergencieController::class);
 Route::resource('documents', DocumentController::class);
 Route::resource('tasks', TaskController::class);
+// Route::get('pdf', ProjetController::class)->name('pdf');
+Route::get('risks-pdf', [RiskController::class, 'pdf']);
+Route::get('projets-pdf', [ProjetController::class, 'pdf']);
+Route::get('pdf_Globale', [ProjetController::class, 'Global_Pdf']);
+
+
 
 
 

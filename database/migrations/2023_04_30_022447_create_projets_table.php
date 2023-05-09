@@ -19,13 +19,6 @@ class CreateProjetsTable extends Migration
             $table->text('description');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('site_id')->constrained('sites');
-            //***** */
-            // $table->unsignedBigInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('utilisatuers');
-            // //***** */
-            // $table->unsignedBigInteger('site_id');
-            // $table->foreign('site_id')->references('id')->on('sites');
-            //***** */
             $table->date('proj_start')->nullable();
             $table->date('proj_end')->nullable();
             $table->timestamps();

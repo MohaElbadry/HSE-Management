@@ -23,9 +23,23 @@
                     </div>
                 </div>
                 @endif
-                <a class="" href="/projets/create">
-                    <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
-                </a>
+                <div class="flex justify-center align-middle">
+                    <a class="mr-4" href="/projets/create">
+                        <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
+                    </a>
+                    <a class="mr-4" href="projets-pdf" onclick="openPDF(); return false;">
+                        <button type="button"
+                            class="inline-block rounded-full bg-yellow-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">
+                            Projet List
+                        </button>
+                    </a>
+                    <a href="pdf_Globale" onclick="openPDF2(); return false;">
+                        <button type="button"
+                            class="inline-block rounded-full bg-yellow-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">
+                            Global Report
+                        </button>
+                    </a>
+                </div>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center p-2 rounded-md">
@@ -143,5 +157,18 @@
     </div>
 </div>
 
+
+<script type="text/javascript">
+    // JavaScript code
+            function openPDF() {
+                var url = 'projets-pdf'; // Replace with the actual URL of your PDF template
+                window.open(url, 'pdfWindow', 'width=200,height=200');
+            }
+            // JavaScript code
+            function openPDF2() {
+                var url = 'pdf_Globale'; // Replace with the actual URL of your PDF template
+                window.open(url, 'pdfWindow', 'width=200,height=200');
+            }
+</script>
 
 @endsection
