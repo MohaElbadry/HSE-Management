@@ -28,13 +28,13 @@ Route::post('login', [PassportController::class, 'login']);
 
 
 Route::middleware(['auth:api'])->group(function () {
-
     Route::get('userinfo', [PassportController::class, 'userinfo']);
     Route::resource('sites', SiteController::class)->only(['store', 'show', 'update', 'destroy']);
     Route::resource('projets', ProjetController::class)->only(['index', 'show', 'update', 'destroy']);
     Route::resource('incidents', IncidentController::class);
     Route::resource('emergencies', EmergencieController::class);
     Route::resource('documents', DocumentController::class);
+    Route::resource('users_lists', UsersListTaskController::class)->only(['index', 'show']);
+    Route::resource('risks', RiskController::class);
+    Route::resource('tasks', TaskController::class)->only(['index']);
 });
-Route::resource('risks', RiskController::class);
-Route::resource('tasks', TaskController::class)->only(['index']);

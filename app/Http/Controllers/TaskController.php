@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Projet;
 use App\Models\Task;
+use App\Models\UserListTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class TaskController extends Controller
@@ -68,13 +70,25 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $projets = Projet::all();
+        $users = DB::table('users')
+            ->join('user_list_tasks', 'users.id', '=', 'user_list_tasks.user_id')
+            ->where('user_list_tasks.task_id', $task->id)
+            ->select('users.*')
+            ->get();
+
+        $project = DB::table('projets')
+            ->join('tasks', 'projets.id', '=', 'tasks.projet_id')
+            ->where('tasks.id', $task->id)
+            ->select('projets.name')
+            ->first();
+
+        $projectName = $project->name;
 
         if (request()->wantsJson()) {
-            return response()->json(compact('projets', 'task'));
+            return response()->json(compact('users', 'projectName', 'task'));
         }
 
-        return view('risks.show', compact('projets', 'task'));
+        return view('tasks.show', compact('users', 'projectName', 'task'));
     }
 
     /**

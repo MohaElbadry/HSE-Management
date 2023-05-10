@@ -42,7 +42,6 @@
    <div class="col align-self-start">
       <a class="btn btn-primary" href="{{route('users.index')}}">All products</a>
    </div>
-
 </div>
 
 

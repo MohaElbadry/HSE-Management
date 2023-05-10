@@ -14,3 +14,5 @@ class Risk extends Model
         'projet_id',
     ];
 }
+// php artisan make:migration create_emergencies_table --create=emergencies 
+// php artisan make:controller IncidentController --resource --model=Incident      //  

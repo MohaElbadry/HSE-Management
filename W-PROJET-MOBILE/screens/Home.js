@@ -4,7 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { API_BASE_URL } from "../IP";
 
-
 export default function Home({ navigation }) {
     useEffect(() => {
         const fetchDataDoctor = async () => {
@@ -13,13 +12,10 @@ export default function Home({ navigation }) {
                 const data = response.data;
                 console.log(data);
                 await AsyncStorage.setItem("token", "token");
-
             } catch (error) {
                 console.error(error);
             }
         };
-
-        fetchDataDoctor();
     }, []);
 
     return (

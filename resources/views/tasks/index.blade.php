@@ -90,8 +90,8 @@
 
                     @endforeach
                 </div>
+            </section>
         </div>
-        </section>
 
         {{--
         --}}
