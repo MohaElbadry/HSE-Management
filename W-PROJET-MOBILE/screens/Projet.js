@@ -50,7 +50,7 @@ const datas = [
             "Ex- Professor & Head of Department Department of Neurosurgery Dhaka Medical College & Hospital Ex- Professor & Head of Department Department of Neurosurgery Dhaka Medical College & Hospital",
     },
 ];
-export default function Pat_Home_Screen({ navigation }) {
+export default function Projet({ navigation }) {
     const [info, setInfo] = useState([]);
 
     // useEffect(() => {
@@ -77,53 +77,80 @@ export default function Pat_Home_Screen({ navigation }) {
                 backgroundColor: "#F6F6F6",
             }}
         >
-            <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="px-2 text-4xl font-semibold text-black">
-                    HSE_Mnagement
+            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#1C6BA4] px-4 pb-8 pt-16 drop-shadow-xl">
+                <AntDesign
+                    name="arrowleft"
+                    size={24}
+                    color="white"
+                    onPress={() => navigation.goBack()}
+                />
+                <Text className="text-start text-xl font-extrabold text-white">
+                    Projet
                 </Text>
-
-                <Text className="text-sl mx-4 mt-2 pb-4 text-center font-normal text-[#16c599]">
-                    Explore Our sensibility Post
+                <Text className="text-xl font-extrabold  text-[#4DCFC0]">
+                    {"  "}
                 </Text>
             </View>
-
-            <FlatList
-                className="mx-4 mb-16 flex-1"
-                data={datas}
-                keyExtractor={(item) => item.id}
-                showsHorizontalScrollIndicator={false}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl bg-white p-4 shadow-xl shadow-orange-300">
-                        <View>
-                            <View>
-                                <Text className="text-xl font-semibold">
-                                    {item.title}
-                                </Text>
-                                <Text className="text-center text-gray-500">
-                                    {item.description}
-                                </Text>
-                            </View>
+            <View className="mt-24 flex w-full items-center pl-5">
+                <View className="mx-6 rounded-xl  bg-white p-2 shadow-xl shadow-cyan-400">
+                    <View className="mx-3">
+                        <Text className="mb-2 font-bold">About</Text>
+                        <View className="flex-row">
+                            <Text className="text-base font-light text-gray-500">
+                                Name :
+                            </Text>
+                            <Text className="text-sm font-light text-gray-500">
+                                {"nammmee"}
+                            </Text>
                         </View>
-                    </TouchableOpacity>
-                )}
-            />
+                        <View className="flex-row">
+                            <Text className="text-base font-light text-gray-500">
+                                description :
+                            </Text>
+                            <Text className="max-w-min mr-2 text-sm font-light text-gray-500">
+                                {"kkkkkkkkk"}
+                                {"kkkkkkkkk"}
+                                {"mmmmmmmmmmmmmmmmmmmmmm"}
+                                {"kkkkkkkkk"}
+                                {"kkkkkkkkk"}
+                                {"kkkkkkkkk"} ' '{"kkkkkkkkk"}
+                            </Text>
+                        </View>
+                        <View className="flex-row">
+                            <Text className="text-base font-light text-gray-500">
+                                Projet start at :
+                            </Text>
+                            <Text className="text-sm font-light text-gray-500">
+                                {"Projet start at"}
+                            </Text>
+                        </View>
+                        <View className="flex-row">
+                            <Text className="text-base font-light text-gray-500">
+                                Site Name :
+                            </Text>
+                            <Text className="text-sm font-light text-gray-500">
+                                {"Site Name"}
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
 
             <View className="absolute -bottom-0 h-14 w-full self-center rounded-2xl bg-white p-3 ">
                 <View className="flex-row items-center  justify-center justify-items-center  space-x-10 align-middle">
                     <TouchableOpacity
-                        onPress={() => navigation.navigate("Home_Screen")}
+                        onPress={() => navigation.navigate("Pat_Home_Screen")}
                     >
                         <AntDesign name="home" size={24} color="black" />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate("")}
+                        onPress={() => navigation.navigate("Pat_List_Doc")}
                     >
                         <Entypo name="list" size={24} color="black" />
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => navigation.navigate("Add")}
+                        onPress={() => navigation.navigate("Pat_List_Doc")}
                     >
                         <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000]">
                             <AntDesign

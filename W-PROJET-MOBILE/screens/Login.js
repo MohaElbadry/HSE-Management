@@ -4,10 +4,11 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
+    Image,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useState } from "react";
-
+import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { API_BASE_URL } from "../IP";
 
@@ -15,21 +16,17 @@ export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = async () => {
+    const handelAddRisk = async () => {
         try {
             const response = await axios.post(`${API_BASE_URL}/api/login`, {
                 email,
                 password,
             });
-
-            console.log(response.data); // Assuming your API returns a token field in the response
             const token = response.data.token;
-
-            // Store the token in AsyncStorage for later use
-            await AsyncStorage.setItem("token", token);
-
+            // Store the token securely using Expo's SecureStore
+            await SecureStore.setItemAsync("token", token);
             // Navigate to the home page or any other desired screen
-            navigation.navigate("Home");
+            navigation.navigate("Home_Screen");
         } catch (error) {
             console.error("Login failed:", error);
         }
@@ -46,12 +43,15 @@ export default function Login({ navigation }) {
                 <View className=" mt-10 ml-5 self-start">
                     <AntDesign name="arrowleft" size={24} color="black" />
                 </View>
-                <Text className="  mt-10 text-3xl font-extrabold ">Tabibi</Text>
+                <Image
+                    source={require("../assets/1.png")}
+                    className="h-20  w-80  from-neutral-50 drop-shadow-xl"
+                />
                 <Text className="  mt-3 text-xl font-medium ">
-                    Login As A Doctor
+                    Login As A User
                 </Text>
             </View>
-            <View className="mt-12  w-full flex-col">
+            <View className="mt-5  w-full flex-col">
                 <View className="w-full flex-col   ">
                     <Text className="col-start-1 mx-7 mt-3 w-fit">
                         Email Address
@@ -76,7 +76,7 @@ export default function Login({ navigation }) {
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
                     className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-teal-400 shadow-lg"
-                    onPress={handleLogin}
+                    onPress={handelAddRisk}
                 >
                     <Text className=" self-center text-xl text-white">
                         Login

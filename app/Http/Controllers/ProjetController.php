@@ -18,6 +18,9 @@ class ProjetController extends Controller
     public function index()
     {
         $projets = Projet::all();
+        if (request()->wantsJson()) {
+            return response()->json(['projets' => $projets]);
+        }
         return view('projets.index', compact('projets'));
     }
 

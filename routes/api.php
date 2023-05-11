@@ -8,6 +8,7 @@ use App\Http\Controllers\RiskController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SensibilisationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,12 +30,11 @@ Route::post('login', [PassportController::class, 'login']);
 
 Route::middleware(['auth:api'])->group(function () {
     Route::get('userinfo', [PassportController::class, 'userinfo']);
-    Route::resource('sites', SiteController::class)->only(['store', 'show', 'update', 'destroy']);
-    Route::resource('projets', ProjetController::class)->only(['index', 'show', 'update', 'destroy']);
-    Route::resource('incidents', IncidentController::class);
-    Route::resource('emergencies', EmergencieController::class);
-    Route::resource('documents', DocumentController::class);
+    Route::resource('projets', ProjetController::class)->only(['index', 'show',]);
+    Route::resource('incidents', IncidentController::class)->only(['index', 'store']);
+    Route::resource('emergencies', EmergencieController::class)->only(['index', 'store']);
     Route::resource('users_lists', UsersListTaskController::class)->only(['index', 'show']);
-    Route::resource('risks', RiskController::class);
+    Route::resource('risks', RiskController::class)->only(['index', 'store']);
     Route::resource('tasks', TaskController::class)->only(['index']);
+    Route::resource('sensibilisations', SensibilisationController::class)->only(['index', 'store']);
 });

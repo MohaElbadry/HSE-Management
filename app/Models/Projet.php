@@ -11,7 +11,7 @@ class Projet extends Model
     protected $fillable = [
         'name',
         'description',
-        'user_id',
+        'user_id', //TODO:need to be removed
         'site_id',
         'proj_start'
     ];

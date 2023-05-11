@@ -46,7 +46,6 @@ class EmergencieController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request->all());
         $validatedData = $request->validate([
             'lib' => 'required',
             'description' => 'required',

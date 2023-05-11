@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Sensibilisation;
 use Illuminate\Http\Request;
-use Validator;
 
 class SensibilisationController extends Controller
 {
@@ -42,12 +41,12 @@ class SensibilisationController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'lib' => 'required',
-            'description' => 'required',
-        ]);
+        // $validatedData = $request->validate([
+        //     'titre' => 'required',
+        //     'description' => 'required',
+        // ]);
 
-        Sensibilisation::create($validatedData);
+        Sensibilisation::create($request->all());
 
         if ($request->wantsJson()) {
             return response()->json(['success' => 'Sensibilisation added successfully']);

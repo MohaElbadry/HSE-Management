@@ -9,7 +9,7 @@ class Sensibilisation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'lib',
+        'titre',
         'description',
     ];
 }

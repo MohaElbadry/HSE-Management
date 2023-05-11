@@ -49,13 +49,13 @@ class RiskController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'lib' => 'required',
-            'description' => 'required',
-            'projet_id' => 'required',
-        ]);
+        // $validatedData = $request->validate([
+        //     'lib' => 'required',
+        //     'description' => 'required',
+        //     'projet_id' => 'required',
+        // ]);
 
-        Risk::create($validatedData);
+        Risk::create($request->all());
 
         if ($request->wantsJson()) {
             return response()->json(['success' => 'Risk added successfully']);
