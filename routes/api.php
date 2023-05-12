@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmergencieController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\ProjetController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SensibilisationController;
+use App\Http\Controllers\UsersListTaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,12 +29,13 @@ Route::post('login', [PassportController::class, 'login']);
 
 
 Route::middleware(['auth:api'])->group(function () {
+    Route::resource('sites', SiteController::class)->only(['index', 'show',]);
     Route::get('userinfo', [PassportController::class, 'userinfo']);
     Route::resource('projets', ProjetController::class)->only(['index', 'show',]);
     Route::resource('incidents', IncidentController::class)->only(['index', 'store']);
     Route::resource('emergencies', EmergencieController::class)->only(['index', 'store']);
-    Route::resource('users_lists', UsersListTaskController::class)->only(['index', 'show']);
     Route::resource('risks', RiskController::class)->only(['index', 'store']);
     Route::resource('tasks', TaskController::class)->only(['index']);
     Route::resource('sensibilisations', SensibilisationController::class)->only(['index', 'store']);
+    Route::resource('users_lists', UsersListTaskController::class)->only(['index', 'show']);
 });

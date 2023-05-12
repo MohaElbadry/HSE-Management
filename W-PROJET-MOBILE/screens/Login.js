@@ -16,7 +16,12 @@ export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handelAddRisk = async () => {
+    /**
+     * This function handles the process of logging in a user by sending a POST request to the API with
+     * their email and password, storing the token securely using Expo's SecureStore, and navigating to
+     * the home screen upon successful login.
+     */
+    const handelLogin = async () => {
         try {
             const response = await axios.post(`${API_BASE_URL}/api/login`, {
                 email,
@@ -24,14 +29,32 @@ export default function Login({ navigation }) {
             });
             const token = response.data.token;
             // Store the token securely using Expo's SecureStore
-            await SecureStore.setItemAsync("token", token);
+            getUserinfo(token);
             // Navigate to the home page or any other desired screen
-            navigation.navigate("Home_Screen");
         } catch (error) {
             console.error("Login failed:", error);
         }
     };
 
+    const getUserinfo = async (token) => {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/api/userinfo`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const user = response.data.user;
+            const userString = JSON.stringify(user);
+            // Extract the array of projects
+            await SecureStore.setItemAsync("token", token);
+            await SecureStore.setItemAsync("user", userString);
+
+            navigation.navigate("Home_Screen");
+        } catch (error) {
+        navigation.navigate("Login");
+            return [];
+        }
+    };
     return (
         <View
             className="mt-4 flex-1 flex-col   items-center "
@@ -76,7 +99,7 @@ export default function Login({ navigation }) {
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
                     className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-teal-400 shadow-lg"
-                    onPress={handelAddRisk}
+                    onPress={handelLogin}
                 >
                     <Text className=" self-center text-xl text-white">
                         Login

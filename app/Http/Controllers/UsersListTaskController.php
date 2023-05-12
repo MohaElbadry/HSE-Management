@@ -19,17 +19,16 @@ class UsersListTaskController extends Controller
         $list = DB::table('user_list_tasks')
             ->join('users', 'user_list_tasks.user_id', '=', 'users.id')
             ->join('tasks', 'user_list_tasks.task_id', '=', 'tasks.id')
-            ->select('user_list_tasks.*', 'users.name as user_name', 'tasks.lib as task_lib')
-            ->get();
+            ->select('user_list_tasks.*', 'users.name as user_name', 'tasks.lib as task_lib', 'tasks.description as tasks_description');
         // dd($list);
-
-        $list = UserListTask::all();
+        if ($request->has('id')) {
+            $list->where('user_list_tasks.user_id', $request->id);
+        }
+        $list = $list->get();
 
         if ($request->wantsJson()) {
             return response()->json(['list' => $list]);
         }
-
-
 
         return view('users_lists.index', compact('list'));
     }

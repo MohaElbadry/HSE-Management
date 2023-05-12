@@ -11,6 +11,10 @@ export default function AddRisk({ navigation }) {
     const [description, setDescription] = useState("");
     const [projects, setProjects] = useState([]);
     const [selectedProjectId, setSelectedProjectId] = useState(-1);
+/**
+ * This function fetches projects from an API using a token for authorization and sets the projects in
+ * state.
+ */
 
     useEffect(() => {
         fetchData();
@@ -19,6 +23,9 @@ export default function AddRisk({ navigation }) {
     const fetchData = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
+            if (!token) {
+                navigation.navigate("Login");
+            }
             const projects = await getProjects(token);
             setProjects(projects);
         } catch (error) {
@@ -41,10 +48,19 @@ export default function AddRisk({ navigation }) {
         }
     };
 
+    /**
+     * The function sets the selected project ID to the provided project ID.
+     * @param projectId - The parameter `projectId` is a variable that represents the ID of a project.
+     * The function `handleProjectChange` takes this parameter as input and sets the
+     * `selectedProjectId` state variable to the value of `projectId`.
+     */
     const handleProjectChange = (projectId) => {
         setSelectedProjectId(projectId);
     };
 
+/**
+ * This function adds a new risk to a project using an API call with authorization.
+ */
  const handelAddRisk = async () => {
   try {
     const token = await SecureStore.getItemAsync("token");

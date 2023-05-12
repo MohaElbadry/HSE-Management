@@ -16,6 +16,9 @@ export default function AddEmergencie({ navigation }) {
      * This is a React function that fetches projects and creates an incident with a selected project
      * ID, a name, and a description.
      */
+    /**
+     * This function fetches all projects and their IDs using an API call and sets them in the state.
+     */
     useEffect(() => {
         fetchData();
     }, []);
@@ -23,6 +26,9 @@ export default function AddEmergencie({ navigation }) {
     const fetchData = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
+            if (!token._A) {
+            navigation.navigate("Login");
+        }
             const projects = await getProjects(token);
             setProjects(projects);
         } catch (error) {

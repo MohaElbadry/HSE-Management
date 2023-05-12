@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Projet;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
@@ -12,13 +12,16 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $sites = Site::all();
+        $projets = Projet::all();
 
-        // Check if the request wants JSON response
-        if (request()->wantsJson()) {
-            return response()->json($sites);
+        if ($request->wantsJson()) {
+            return response()->json([
+                'sites' => $sites,
+                'projets' => $projets
+            ]);
         }
 
         return view('sites.index', compact('sites'));

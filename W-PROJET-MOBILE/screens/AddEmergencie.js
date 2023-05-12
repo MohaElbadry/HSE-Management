@@ -12,6 +12,11 @@ export default function AddEmergencie({ navigation }) {
     const [projects, setProjects] = useState([]);
     const [selectedProjectId, setSelectedProjectId] = useState(-1);
 
+    /**
+     * creates an Emergencie with a selected project_ID, a name, and a description.
+     * This function fetches projects from an API using an authorization token and sets the projects in
+     * the state.
+     */
     useEffect(() => {
         fetchData();
     }, []);
@@ -48,6 +53,9 @@ export default function AddEmergencie({ navigation }) {
     const handelAddRisk = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
+            if (!token._A) {
+            navigation.navigate("Login");
+        }
             const response = await axios.post(
                 `${API_BASE_URL}/api/emergencies`,
                 {

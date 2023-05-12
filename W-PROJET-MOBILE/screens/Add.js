@@ -58,7 +58,9 @@ export default function Projet({ navigation }) {
                     >
                         <AntDesign name="home" size={24} color="black" />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate("")}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("UserTasksList")}
+                    >
                         <Entypo name="list" size={24} color="black" />
                     </TouchableOpacity>
 
@@ -75,9 +77,7 @@ export default function Projet({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() =>
-                            navigation.navigate("Pat_List_Traitement")
-                        }
+                        onPress={() => navigation.navigate("ProjSites")}
                     >
                         <Ionicons
                             name="chatbox-outline"
@@ -86,7 +86,7 @@ export default function Projet({ navigation }) {
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate("Pat_Profile")}
+                        onPress={() => navigation.navigate("Profile")}
                     >
                         <AntDesign name="user" size={26} color="black" />
                     </TouchableOpacity>

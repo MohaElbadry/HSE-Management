@@ -1,22 +1,10 @@
 import { Image, Text, View, TouchableOpacity } from "react-native";
-import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { API_BASE_URL } from "../IP";
 
 export default function Home({ navigation }) {
-    useEffect(() => {
-        const fetchDataDoctor = async () => {
-            try {
-                const response = await axios.get(`${API_BASE_URL}/api/tasks`);
-                const data = response.data;
-                console.log(data);
-                await AsyncStorage.setItem("token", "token");
-            } catch (error) {
-                console.error(error);
-            }
-        };
-    }, []);
+
 
     return (
         <View
@@ -26,29 +14,29 @@ export default function Home({ navigation }) {
             }}
         >
             <View
-                className=" mx-5 w-full basis-2/3  items-center justify-center rounded-br-full shadow-md "
+                className="  w-full basis-2/3  items-center justify-center rounded-br-full shadow-md "
                 style={{
-                    backgroundColor: "#ECF2F3",
+                    backgroundColor: "#FFFFFF",
                     borderBottomLeftRadius: 150,
                     borderBottomRightRadius: 150,
                 }}
             >
-                <Text className="  mt-24 text-3xl font-extrabold ">Tabibi</Text>
                 <Image
-                    source={require("../assets/Logo-Doc.png")}
-                    className="h-2/3  w-80 rounded-b-full from-neutral-50 drop-shadow-xl"
+                    source={require("../assets/HSE-2.2png.png")}
+                    className="mt-240 bg-white h-2/3 w-80  rotate-180 items-center self-center from-neutral-50 drop-shadow-xl"
                 />
             </View>
             <View className="w-full basis-1/3 flex-col  items-center ">
                 <Text className=" mt-7  font-bold">
-                    Votre meilleur assistant médical
+                    Better safe than sorry."
                 </Text>
                 <Text className="mt-5 px-9 text-xs ">
-                    Votre meilleur assistant médical
+                    Prioritize safety, health, and the environment with our app.
+                    Ensure a secure and sustainable future for all.
                 </Text>
                 <TouchableOpacity
                     className="absolute bottom-10 mt-8 h-12 w-60 justify-center self-center rounded-lg bg-cyan-600 shadow-lg"
-                    onPress={() => navigation.navigate("Doc_Login")}
+                    onPress={() => navigation.navigate("Login")}
                 >
                     <Text className=" self-center text-xl font-bold text-white">
                         Next

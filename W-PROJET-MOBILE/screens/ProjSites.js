@@ -7,8 +7,9 @@ import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { API_BASE_URL } from "../IP.js";
 
-export default function Pat_Home_Screen({ navigation }) {
-    const [sensibilisations, setSensibilisations] = useState([]);
+export default function ProjSites({ navigation }) {
+    const [projects, setProjects] = useState([]);
+    const [sites, setSites] = useState([]);
 
     useEffect(() => {
         fetchData();
@@ -19,24 +20,22 @@ export default function Pat_Home_Screen({ navigation }) {
             if (!token) {
                 navigation.navigate("Login");
             }
-            const sensibilisations = await getProjects(token);
-            setSensibilisations(sensibilisations);
+            await getProjSites(token);
         } catch (error) {
-            navigation.navigate("Login");
+            // navigation.navigate("Login");
         }
     };
 
-    const getProjects = async (token) => {
+    const getProjSites = async (token) => {
         try {
-            const response = await axios.get(
-                `${API_BASE_URL}/api/sensibilisations`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-            const sensibilisations = response.data.sensibilisations; // Extract the array of projects
+            const response = await axios.get(`${API_BASE_URL}/api/sites`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const sensibilisations = response.data.sensibilisations;
+            setSites(response.data.sites);
+            setProjects(response.data.projets);
             return sensibilisations;
         } catch (error) {
             navigation.navigate("Login");
@@ -48,22 +47,47 @@ export default function Pat_Home_Screen({ navigation }) {
         <View
             className="flex-1  "
             style={{
-                backgroundColor: "#F6F6F6",
+                backgroundColor: "#0C134F",
             }}
         >
-            <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="px-2 text-4xl font-semibold text-black">
-                    HSE_Mnagement
-                </Text>
-
-                <Text className="text-sl mx-4 mt-2 pb-4 text-center font-normal text-[#16c599]">
-                    Explore Our sensibility Post
+            <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-10 ">
+                <Text className="px-2 text-4xl font-semibold text-[#5C469C]">
+                    Our Projet and Sites
                 </Text>
             </View>
-
+            <Text className="px-2 pt-2 text-center text-xl font-semibold text-gray-500">
+                Our Sites
+            </Text>
             <FlatList
-                className="mx-4 mb-16 flex-1"
-                data={sensibilisations}
+                className="mx-4 flex-1"
+                data={sites}
+                keyExtractor={(item) => item.id}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item }) => (
+                    <TouchableOpacity className="m-3 rounded-2xl bg-white p-4 shadow-xl shadow-orange-300">
+                        <View>
+                            <View>
+                                <Text className="text-dark text-xl font-semibold">
+                                    {item.name}
+                                </Text>
+                                <Text className="text-center text-gray-500">
+                                    {item.description}
+                                </Text>
+                                <Text className=" text-end text-gray-300">
+                                    {item.created_at}
+                                </Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                )}
+            />
+            <Text className="px-2 text-center text-xl font-semibold text-gray-500">
+                Our projectsr
+            </Text>
+            <FlatList
+                className="mx-4  mb-14 flex-1"
+                data={projects}
                 keyExtractor={(item) => item.id}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
@@ -72,10 +96,13 @@ export default function Pat_Home_Screen({ navigation }) {
                         <View>
                             <View>
                                 <Text className="text-xl font-semibold">
-                                    {item.titre}
+                                    {item.name}
                                 </Text>
                                 <Text className="text-center text-gray-500">
                                     {item.description}
+                                </Text>
+                                <Text className="text-center text-gray-500">
+                                    {item.proj_start}
                                 </Text>
                                 <Text className=" text-end text-gray-300">
                                     {item.created_at}

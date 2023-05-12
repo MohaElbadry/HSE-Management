@@ -7,8 +7,8 @@ import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { API_BASE_URL } from "../IP.js";
 
-export default function Pat_Home_Screen({ navigation }) {
-    const [sensibilisations, setSensibilisations] = useState([]);
+export default function UserTasksList({ navigation }) {
+    const [lists, setLists] = useState([]);
 
     useEffect(() => {
         fetchData();
@@ -19,25 +19,27 @@ export default function Pat_Home_Screen({ navigation }) {
             if (!token) {
                 navigation.navigate("Login");
             }
-            const sensibilisations = await getProjects(token);
-            setSensibilisations(sensibilisations);
+            const users_lists = await getUsers_lists(token);
+            setLists(users_lists);
         } catch (error) {
             navigation.navigate("Login");
         }
     };
 
-    const getProjects = async (token) => {
+    const getUsers_lists = async (token) => {
         try {
+            const userString = await SecureStore.getItemAsync("user");
+            const user = JSON.parse(userString);
             const response = await axios.get(
-                `${API_BASE_URL}/api/sensibilisations`,
+                `${API_BASE_URL}/api/users_lists?id=${user.id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 }
             );
-            const sensibilisations = response.data.sensibilisations; // Extract the array of projects
-            return sensibilisations;
+            const lists = response.data.list; // Extract the array of projects
+            return lists;
         } catch (error) {
             navigation.navigate("Login");
             return [];
@@ -48,7 +50,7 @@ export default function Pat_Home_Screen({ navigation }) {
         <View
             className="flex-1  "
             style={{
-                backgroundColor: "#F6F6F6",
+                backgroundColor: "#F6F1E9",
             }}
         >
             <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
@@ -63,21 +65,21 @@ export default function Pat_Home_Screen({ navigation }) {
 
             <FlatList
                 className="mx-4 mb-16 flex-1"
-                data={sensibilisations}
+                data={lists}
                 keyExtractor={(item) => item.id}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl bg-white p-4 shadow-xl shadow-orange-300">
+                    <TouchableOpacity className="m-3 rounded-2xl  bg-[#FF6000] p-4 shadow-xl">
                         <View>
                             <View>
                                 <Text className="text-xl font-semibold">
-                                    {item.titre}
+                                    {item.task_lib}
                                 </Text>
                                 <Text className="text-center text-gray-500">
-                                    {item.description}
+                                    {item.tasks_description}
                                 </Text>
-                                <Text className=" text-end text-gray-300">
+                                <Text className="text-end text-gray-300">
                                     {item.created_at}
                                 </Text>
                             </View>
