@@ -24,8 +24,11 @@
                 </div>
                 @endif
                 {{-- this is the icone Plus for creation --}}
-                <a class="" href="/tasks/create">
-                    <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
+                <a href="/tasks/create">
+                    <button type="button"
+                        class="inline-block rounded-full bg-yellow-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">
+                        NEW TASK
+                    </button>
                 </a>
             </div>
             <div class="flex items-center justify-between">
@@ -59,33 +62,57 @@
                 {{-- item --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
                     @foreach ($tasks as $item =>$i)
-                    <div
-                        class="w-full relative bg-gray-500 rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
 
-                        <a class="text-center pt-3  pb-2" href="{{ route('tasks.show', $i->id) }}">
-                            {{-- //TODO:show all the users in the list --}}
-                            <p class="text-xl text-white font-bold mb-2">Task [{{ $item+1 }}] <br> {{ $i->lib }}</p>
-                            <p class="text-lg text-gray-200  font-normal">{{ $i->description }}</p>
-                            <p class="text-sm text-gray-300 font-normal p-1">{{ $i->task_start }}---->{{
-                                $i->task_end }}
-                            </p>
+                    <div class="card mb-3">
+                        <a href="{{route('tasks.show',$i->id)}}">
+                            <div class="img">
+                                <div class="save">
+                                    <svg class="svg" width="683" height="683" viewBox="0 0 683 683" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_993_25)">
+                                            <mask id="mask0_993_25" style="mask-type:luminance"
+                                                maskUnits="userSpaceOnUse" x="0" y="0" width="683" height="683">
+                                                <path d="M0 -0.00012207H682.667V682.667H0V-0.00012207Z" fill="white">
+                                                </path>
+                                            </mask>
+                                            <g mask="url(#mask0_993_25)">
+                                                <path
+                                                    d="M148.535 19.9999C137.179 19.9999 126.256 24.5092 118.223 32.5532C110.188 40.5866 105.689 51.4799 105.689 62.8439V633.382C105.689 649.556 118.757 662.667 134.931 662.667H135.039C143.715 662.667 151.961 659.218 158.067 653.09C186.451 624.728 270.212 540.966 304.809 506.434C314.449 496.741 327.623 491.289 341.335 491.289C355.045 491.289 368.22 496.741 377.859 506.434C412.563 541.074 496.752 625.242 524.816 653.348C530.813 659.314 538.845 662.667 547.308 662.667C563.697 662.667 576.979 649.395 576.979 633.019V62.8439C576.979 51.4799 572.48 40.5866 564.447 32.5532C556.412 24.5092 545.489 19.9999 534.133 19.9999H148.535Z"
+                                                    stroke="#CED8DE" stroke-width="40" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_993_25">
+                                                <rect width="682.667" height="682.667" fill="white"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="text">
+                                <p class=" text-xl">{{$i->lib}}</p>
+                                <p class="p mt-1"> {{$i->description}}
+                                    </br>
+                                </p>
+                                <p class="p text-gray-600">
+                                    Show all User Affected to this Task
+                                </p>
+
+                                <div class="w-8 h-8">
+                                    <form action="{{ route('tasks.destroy', $i->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="" type="submit">
+                                            <img class="shadow-white mt-3 w-8 h-8"
+                                                src=" {{ asset('/icons/poubelle.png') }} " alt="EDITe">
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
                         </a>
-                        <span class="absolute bottom-1 left-2 p- scale-50 hover:scale-100"
-                            class="text-gray-400 mr-3 inline-flex  lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 ">
-                            <a href="{{ route('tasks.edit', $i->id) }}">
-                                <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} " alt="trach">
-                            </a>
-                        </span>
-
-                        <form class="absolute scale-50 hover:scale-125  bottom-0 right-1 p-1"
-                            action="{{ route('tasks.destroy', $i->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">
-                                <img class="shadow-white  w-7 h-7" src=" {{ asset('/icons/poubelle33.png') }} "
-                                    alt="EDITe">
-                            </button>
-                        </form>
                     </div>
 
                     @endforeach

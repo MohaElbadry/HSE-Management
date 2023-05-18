@@ -1,4 +1,4 @@
-@extends('tasks.layout')
+@extends('users_lists.layout')
 
 
 @section('content')
@@ -24,9 +24,13 @@
         </div>
         @endif
         {{-- this is the icone Plus for creation --}}
-        <a class="" href="/users_lists/create">
-          <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
+        <a href="/users_lists/create?task_id={{ $task->id }}">
+          <button type="button"
+            class="inline-block rounded-full bg-yellow-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">
+            ADD USER
+          </button>
         </a>
+
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-center p-2 rounded-md">
@@ -57,38 +61,37 @@
         {{-- item --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
           @foreach ($users as $item =>$i)
-          <div
-            class="w-full relative bg-gray-600 rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
 
-            {{-- //TODO:show all the users in the list --}}
-            <p class="text-xl text-white font-bold mb-2"> {{ $i->name }}</p>
-            <p class="text-lg text-gray-200  font-normal">{{ $i->email }}</p>
-
-            <span class="absolute bottom-1 left-2 p- scale-50 hover:scale-100"
-              class="text-gray-400 mr-3 inline-flex  lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 ">
-              <a href="{{ route('users_lists.edit', $i->id) }}">
-                <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} " alt="trach">
-              </a>
-            </span>
-
-            <form class="absolute scale-50 hover:scale-125  bottom-0 right-1 p-1"
-              action="{{ route('users_lists.destroy', $i->id) }}" method="post">
-              @csrf
-              @method('DELETE')
-              <button type="submit">
-                <img class="shadow-white  w-7 h-7" src=" {{ asset('/icons/poubelle33.png') }} " alt="EDITe">
-              </button>
+          <div class="card">
+            <h3 class="card__title">{{ $i->id }}
+            </h3>
+            <p class="card__content break-words">{{ $i->email }}</p>
+            <div class="card__date">
+              {{ $i->updated_at }}
+            </div>
+            <form class="inline" action="{{ route('users_lists.destroy', $i->id) }}" method="post">
+              <div class="card__arrow">
+                @csrf
+                @method('DELETE')
+                <button type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="8" width="8">
+                    <img class="shadow-white  w-4 h-4" src=" {{ asset('/icons/delete.png') }} " alt="EDITe">
+                  </svg>
+                </button>
+              </div>
             </form>
           </div>
 
           @endforeach
         </div>
-      </section>
-    </div>
 
-    {{--
-    --}}
+    </div>
+    </section>
   </div>
+
+  {{--
+  --}}
+</div>
 </div>
 </div>
 

@@ -8,14 +8,14 @@
     <!-- component -->
 
     <form class="mt-8 space-y-6 bg-gray-100 p-4 border-gray-200 shadow-xl  rounded-xl "
-        action="{{ route('sites.update', $site->id) }}" method="POST">
+        action="{{ route('sensibilisations.update', $sensibilisation->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div>
             <button type='button'
                 class='flex  break-inside  rounded-3xl px-8  bg-white dark:bg-slate-800 dark:text-white'>
                 <div class='flex items-center justify-between flex-1'>
-                    <a class='text-lg font-medium text-white' href="/sites">Back</a>
+                    <a class='text-lg font-medium text-white' href="/sensibilisations">Back</a>
 
                 </div>
             </button>
@@ -24,10 +24,10 @@
         <input type="hidden" name="remember" value="true">
         <div class="relative">
 
-            <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">Name(You can't change the name)</label>
+            <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">Name</label>
             <input
                 class=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
-                name="name" placeholder="Libellet" disabled value="{{ $site->name }}">
+                name="titre" placeholder="Libellet" value="{{ $sensibilisation->titre }}">
         </div>
         <div class="mt-8 content-center">
             <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
@@ -35,7 +35,7 @@
             </label>
             <input
                 class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
-                name="description" placeholder="Enter The Description" value="{{ $site->description }}">
+                name="description" placeholder="Enter The Description" value="{{ $sensibilisation->description }}">
         </div>
 
 

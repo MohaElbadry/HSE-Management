@@ -1,4 +1,5 @@
-@extends('incidents.layout')
+@extends('emergencies.layout')
+
 
 @section('content')
 
@@ -7,22 +8,6 @@
         <div class=" flex items-center justify-between pb-6">
             <div>
                 <h2 class="text-gray-600 font-semibold">Incidents </h2>
-                @if ($error = Session::get('ERRO'))
-                <div class="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700" role="alert">
-                    <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <div>
-                        <span class="font-medium">Danger alert!</span>
-                        {{ $error }}
-                    </div>
-                </div>
-                @endif
-
-
                 @if ($message = Session::get('success'))
                 <div class="max-w-lg mx-auto">
                     <div class="flex bg-blue-100 rounded-lg p-4 mb-4 text-sm text-blue-700" role="alert">
@@ -38,7 +23,8 @@
                     </div>
                 </div>
                 @endif
-                <a class="" href="/incidents/create">
+                {{-- this is the icone Plus for creation --}}
+                <a class="" href="/emergencies/create">
                     <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
                 </a>
             </div>
@@ -56,90 +42,44 @@
             </div>
         </div>
         <div>
-            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    <table class="min-w-full leading-normal">
-                        <thead>
-                            <tr>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Name
-                                </th>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Description
-                                </th>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Created at
-                                </th>
+            <table class="min-w-full leading-normal">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-5 py-3 border-b-2 text-center border-gray-200 bg-gray-100 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Incidents List
+                        </th>
+                    </tr>
+                </thead>
+            </table>
 
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    ACTIONS
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- list des ....!-->
-                            @foreach ($incidents as $item)
-                            <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $item->lib }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 text-start whitespace-no-wrap">
-                                        {{ $item->description }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200  bg-white text-sm">
-                                    <p class="text-gray-900 text-start">
-                                        {{ $item->projet_id }}
 
-                                    </p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span class="relative  px-3 py-1 flex font-semibold text-green-900 leading-tight">
-
-                                        <a class="relative" href="{{ route('incidents.show', $item->id) }}">
-                                            <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/oeil2.png') }} "
-                                                alt="trach">
-                                        </a>
-                                        <a class="relative" href="{{ route('incidents.edit', $item->id) }}">
-                                            <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} "
-                                                alt="EDITe">
-                                        </a>
-                                        <form action="{{ route('incidents.destroy', $item->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="relative" type="submit">
-                                                <img class="shadow-white w-8 h-8"
-                                                    src=" {{ asset('/icons/poubelle.png') }} " alt="EDITe">
-                                            </button>
-                                        </form>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            @endforeach
-
-                            <!--  FIN de list des ....!-->
-
-                        </tbody>
-                    </table>
-
+            {{-- list --}}
+            <section class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+                {{-- item --}}
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                    @foreach ($incidents as $item =>$i)
+                    <div class="cards">
+                        <a href="{{ route('incidents.show', $i->id) }}"">
+                            <div class=" card blue">
+                            <p class="tip">{{ $i->lib }}</p>
+                            <p class="second-text">Projet: {{ $i->projet_id }}</p>
+                    </div>
+                    </a>
                 </div>
-            </div>
+
+                @endforeach
         </div>
     </div>
+    </section>
+
+    {{--
+    --}}
+</div>
+</div>
+</div>
 
 
 
 
-    @endsection
+@endsection

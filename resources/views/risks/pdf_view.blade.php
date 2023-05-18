@@ -43,6 +43,7 @@
 <body>
 	<div class="container">
 		<h1>Risk Report</h1>
+		{{-- <img src="1.png" /> --}}
 	</div>
 	<table>
 		<thead>
@@ -54,9 +55,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($risks as $item)
+			@foreach ($risks as $i=>$item)
 			<tr>
-				<td>{{ $item->id }}</td>
+				<td>{{ $i+1 }}</td>
 				<td>{{ $item->lib }}</td>
 				<td>{{ $item->description }}</td>
 				<td>{{ $item->projet_name }}</td>
@@ -65,12 +66,12 @@
 		</tbody>
 	</table>
 	<p>
-		Lieu : <br>
+		Lieu : SAFI <br>
 		Date: {{ date('Y-m-d') }}<br>
 		Heure: {{ date('H:i:s') }}
 	</p>
 	<div class="signature-container">
-		<h6>Signature</h6>
+		<h4>Signature</h4>
 	</div>
 </body>
 

@@ -73,7 +73,7 @@ class TaskController extends Controller
         $users = DB::table('users')
             ->join('user_list_tasks', 'users.id', '=', 'user_list_tasks.user_id')
             ->where('user_list_tasks.task_id', $task->id)
-            ->select('users.*')
+            ->select('users.*', 'user_list_tasks.*')
             ->get();
 
         $project = DB::table('projets')
@@ -81,6 +81,8 @@ class TaskController extends Controller
             ->where('tasks.id', $task->id)
             ->select('projets.name')
             ->first();
+
+        // dd($users);
 
         $projectName = $project->name;
 

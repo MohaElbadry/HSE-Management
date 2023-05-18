@@ -1,4 +1,4 @@
-@extends('sites.layout')
+@extends('sensibilisations.layout')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <div class="bg-white px-8 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div>
-                <h2 class="text-gray-600 font-semibold">Sites  </h2>
+                <h2 class="text-gray-600 font-semibold">Sensibilisations </h2>
                 @if ($error = Session::get('ERRO'))
                 <div class="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700" role="alert">
                     <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20"
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 @endif
-                <a class="" href="/sites/create">
+                <a class="" href="/sensibilisations/create">
                     <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
                 </a>
             </div>
@@ -82,19 +82,19 @@
                         </thead>
                         <tbody>
                             <!-- list des ....!-->
-                            @foreach ($sites as $item)
+                            @foreach ($sensibilisations as $item)
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center">
                                         <div class="ml-3">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $item->name }}
+                                                {{ $item->titre }}
                                             </p>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 text-start whitespace-no-wrap">
+                                <td class="px-5 py-5 border-b border-gray-200  bg-white text-sm">
+                                    <p class="text-gray-900  text-start w-96 break-words">
                                         {{ $item->description }}
                                     </p>
                                 </td>
@@ -107,15 +107,15 @@
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span class="relative  px-3 py-1 flex font-semibold text-green-900 leading-tight">
 
-                                        <a class="relative" href="{{ route('sites.show', $item->id) }}">
+                                        <a class="relative" href="{{ route('sensibilisations.show', $item->id) }}">
                                             <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/oeil2.png') }} "
                                                 alt="trach">
                                         </a>
-                                        <a class="relative" href="{{ route('sites.edit', $item->id) }}">
+                                        <a class="relative" href="{{ route('sensibilisations.edit', $item->id) }}">
                                             <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} "
                                                 alt="EDITe">
                                         </a>
-                                        <form action="{{ route('sites.destroy', $item->id) }}" method="post">
+                                        <form action="{{ route('sensibilisations.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="relative" type="submit">

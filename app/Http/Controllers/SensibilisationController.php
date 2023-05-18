@@ -91,7 +91,7 @@ class SensibilisationController extends Controller
     public function update(Request $request, Sensibilisation $sensibilisation)
     {
         $validatedData = $request->validate([
-            'lib' => 'required',
+            'titre' => 'required',
             'description' => 'required',
         ]);
 

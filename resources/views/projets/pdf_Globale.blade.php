@@ -54,6 +54,16 @@
 	</div>
 	</br>
 	</br>
+	<h5>
+		This global report provides a concise overview of all sites, risks, emergencies, projects, and users within a
+		specified
+		scope. It aims to provide a comprehensive understanding of the organization's operations, including site
+		locations,
+		potential risks, emergency response protocols, ongoing projects, and user roles. The report serves as a valuable
+		resource for stakeholders, enabling them to gain insights into the organization's global landscape and make
+		informed
+		decisions.
+	</h5>
 	</br>
 	{{-- SITES --}}
 	<h6>List Sites</h6>
@@ -67,9 +77,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($sites as $item)
+			@foreach ($sites as $i =>$item)
 			<tr>
-				<td>{{ $item->id }}</td>
+				<td>{{ $i+1 }}</td>
 				<td>{{ $item->name }}</td>
 				<td>{{ $item->description }}</td>
 				<td>{{ $item->created_at }}</td>
@@ -89,18 +99,16 @@
 				<th>#Num</th>
 				<th>Lib</th>
 				<th>Description</th>
-				<th>ADMIN</th>
 				<th>SITE</th>
 				<th>Projet start at</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($projets as $item)
+			@foreach ($projets as $i =>$item)
 			<tr>
-				<td>{{ $item->id }}</td>
+				<td>{{ $i +1 }}</td>
 				<td>{{ $item->name }}</td>
 				<td>{{ $item->description }}</td>
-				<td>{{ $item->user_name }}</td>
 				<td>{{ $item->site_name }}</td>
 				<td>{{ $item->proj_start }}</td>
 
@@ -124,9 +132,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($risks as $item)
+			@foreach ($risks as $i =>$item)
 			<tr>
-				<td>{{ $item->id }}</td>
+				<td>{{ $i+1 }}</td>
 				<td>{{ $item->lib }}</td>
 				<td>{{ $item->description }}</td>
 				<td>{{ $item->projet_name }}</td>
@@ -151,9 +159,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($users as $item)
+			@foreach ($users as $i =>$item)
 			<tr>
-				<td>{{ $item->id }}</td>
+				<td>{{ $i }}</td>
 				<td>{{ $item->name }}</td>
 				<td>{{ $item->email }}</td>
 				<td>{{ $item->role }}</td>
@@ -167,12 +175,12 @@
 	</br>
 	</br>
 	<p>
-		Lieu : <br>
+		Lieu : SAFI/Maroc<br>
 		Date: {{ date('Y-m-d') }}<br>
 		Heure: {{ date('H:i:s') }}
 	</p>
 	<div class="signature-container">
-		<h6>Signature</h6>
+		<h4>Signature</h4>
 	</div>
 </body>
 

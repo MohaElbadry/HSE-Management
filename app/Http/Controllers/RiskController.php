@@ -125,7 +125,7 @@ class RiskController extends Controller
     {
         $risk->delete();
 
-        if ($request()->wantsJson()) {
+        if (request()->wantsJson()) {
             return response()->json(['message' => 'RISK deleted successfully']);
         }
 

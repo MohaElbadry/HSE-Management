@@ -1,5 +1,8 @@
 <?php
 
+/* The ProjetController class is a PHP controller that handles CRUD operations for projects, generates
+PDF reports, and interacts with related models such as Site and User. */
+
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
@@ -42,7 +45,6 @@ class ProjetController extends Controller
         // $request->validate([
         //     'name' => 'required',
         //     'description' => 'required',
-        //     'user_id' => 'required',
         //     'site_id' => 'required',
         //     'proj_start' => 'required'
         // ]);
@@ -83,7 +85,6 @@ class ProjetController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'user_id' => 'required',
             'site_id' => 'required',
             'proj_start' => 'required'
 
@@ -104,12 +105,18 @@ class ProjetController extends Controller
     }
 
 
+    /**
+     * This function generates a PDF report of projects and their associated sites using Laravel and
+     * downloads it.
+     * 
+     * @return A PDF file is being returned for download, which is generated from the data obtained
+     * from the database and the view 'projets.pdf_view'.
+     */
     public function pdf()
     {
         $projets = DB::table('projets')
-            ->join('users', 'projets.user_id', '=', 'users.id')
             ->join('sites', 'projets.site_id', '=', 'sites.id')
-            ->select('projets.*', 'users.name as user_name', 'sites.name as site_name')
+            ->select('projets.*', 'sites.name as site_name')
             ->get();
 
         view()->share('projets', $projets);
@@ -118,13 +125,19 @@ class ProjetController extends Controller
 
         return $pdf->download('projet_Rapport_pdf_' . time() . '.pdf');
     }
+
+    /**
+     * This function generates a PDF report for all projects and their associated risks, users, and
+     * sites.
+     * 
+     * @return A PDF file is being returned for download.
+     */
     public function Global_Pdf()
     {
         //natural join
         $projets = DB::table('projets')
-            ->join('users', 'projets.user_id', '=', 'users.id')
             ->join('sites', 'projets.site_id', '=', 'sites.id')
-            ->select('projets.*', 'users.name as user_name', 'sites.name as site_name')
+            ->select('projets.*',  'sites.name as site_name')
             ->get();
         view()->share('projets', $projets);
 

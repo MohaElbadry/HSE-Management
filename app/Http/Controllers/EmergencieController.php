@@ -64,18 +64,12 @@ class EmergencieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, Emergencie $emergencie)
+    public function show($emergencie)
     {
-        $projets = Projet::all();
+        $emergencie = Emergencie::find($emergencie);
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'emergencie' => $emergencie,
-                'projets' => $projets
-            ]);
-        }
-        var_dump($emergencie);
-        return view('emergencies.show', compact('emergencie', 'projets'));
+        // dd($emergencie);
+        return view('emergencies.show', compact('emergencie'));
     }
 
     /**

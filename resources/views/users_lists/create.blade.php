@@ -37,7 +37,9 @@
             </p>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="task_id">
                 @foreach ($tasks as $task)
-                <option value="{{ $task->id }}">{{ $task->lib }}</option>
+                <option value="{{ $task->id }}" @if ($task->id == request('task_id'))  selected @endif>
+                    {{ $task->lib }}
+                </option>
                 @endforeach
             </select>
         </div>

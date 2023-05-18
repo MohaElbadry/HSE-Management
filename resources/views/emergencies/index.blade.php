@@ -1,4 +1,4 @@
-@extends('tasks.layout')
+@extends('emergencies.layout')
 
 
 @section('content')
@@ -59,43 +59,42 @@
                 {{-- item --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
                     @foreach ($emergencies as $item =>$i)
-                    <div
-                        class="w-full relative bg-gray-500 rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
-
-                        <a class="text-center pt-3  pb-2">
-                            {{-- //TODO:show all the users in the list --}}
-                            <p class="text-xl text-white font-bold mb-2">Em [{{ $item+1 }}] <br> LIB:{{ $i->lib }}</p>
-                            <p class="text-lg text-gray-200  font-normal">{{ $i->description }}</p>
-                            <p class="text-sm text-gray-300 font-normal p-1">{{ $i->projet_id }}
-                            </p>
-                        </a>
-                        <span class="absolute bottom-1 left-2 p- scale-50 hover:scale-100"
-                            class="text-gray-400 mr-3 inline-flex  lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 ">
-                            <a href="{{ route('emergencies.edit', $i->id) }}">
-                                <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} " alt="trach">
-                            </a>
-                        </span>
-
-                        <form class="absolute scale-50 hover:scale-125 bottom-0 right-1 p-1"
-                            action="{{ route('emergencies.destroy', $i->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">
-                                <img class="shadow-white  w-7 h-7" src=" {{ asset('/icons/poubelle33.png') }} "
-                                    alt="EDITe">
-                            </button>
-                        </form>
+                    <div class="cards">
+                        <a href="{{ route('emergencies.show', $i->id) }}"">
+                            <div class=" card blue">
+                            <p class="tip">{{ $i->lib }}</p>
+                            <p class="second-text">Projet: {{ $i->projet_id }}</p>
                     </div>
-
-                    @endforeach
+                    </a>
                 </div>
-        </div>
-        </section>
 
-        {{--
-        --}}
+                @endforeach
+        </div>
     </div>
+    </section>
+
+    {{--
+    --}}
 </div>
+</div>
+</div>
+<div class="w-full relative bg-gray-500 rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+
+    <a class="text-center pt-3  pb-2">
+        {{-- //TODO:show all the users in the list --}}
+        <p class="text-xl text-white font-bold mb-2">Em [{{ $item+1 }}] <br> LIB:{{ $i->lib }}</p>
+        <p class="text-lg text-gray-200  font-normal">{{ $i->description }}</p>
+        <p class="text-sm text-gray-300 font-normal p-1"> {{ $i->projet_id }}
+        </p>
+    </a>
+    <span class="absolute bottom-1 left-2 p- scale-50 hover:scale-100"
+        class="text-gray-400 mr-3 inline-flex  lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 ">
+        <a href="{{ route('emergencies.edit', $i->id) }}">
+            <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} " alt="trach">
+        </a>
+    </span>
+
+
 </div>
 
 

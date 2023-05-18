@@ -71,6 +71,7 @@
                         <tbody>
                             <!-- list des ....!-->
                             @foreach ($documents as $item)
+                            
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center">
@@ -88,7 +89,7 @@
                                 </td>
                                 <td class="px-5 py-5 border-b  border-gray-200 bg-white text-sm">
                                     <a class="relative" href="{{ route('documents.show', $item) }}">
-                                        <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/oeil2.png') }} "
+                                        <img class="shadow-white   w-8 h-8" src=" {{ asset('/icons/download.png') }} "
                                             alt="trach">
                                     </a>
                                 </td>

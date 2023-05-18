@@ -6,7 +6,7 @@
     <div class="bg-white px-8 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div>
-                <h2 class="text-gray-600 font-semibold">Sites  </h2>
+                <h2 class="text-gray-600 font-semibold">Sites </h2>
                 @if ($error = Session::get('ERRO'))
                 <div class="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700" role="alert">
                     <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20"
@@ -107,10 +107,6 @@
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span class="relative  px-3 py-1 flex font-semibold text-green-900 leading-tight">
 
-                                        <a class="relative" href="{{ route('sites.show', $item->id) }}">
-                                            <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/oeil2.png') }} "
-                                                alt="trach">
-                                        </a>
                                         <a class="relative" href="{{ route('sites.edit', $item->id) }}">
                                             <img class="shadow-white w-8 h-8" src=" {{ asset('/icons/editer.png') }} "
                                                 alt="EDITe">

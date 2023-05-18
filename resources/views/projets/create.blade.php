@@ -12,7 +12,7 @@
             <button type='button'
                 class='flex  break-inside  rounded-3xl px-8  bg-white dark:bg-slate-800 dark:text-white'>
                 <div class='flex items-center justify-between flex-1'>
-                    <a class='text-lg font-medium text-white' href="/projets">All Products</a>
+                    <a class='text-lg font-medium text-white' href="/projets">Back</a>
                 </div>
             </button>
         </div>
@@ -41,18 +41,7 @@
                 class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
                 name="proj_start" placeholder="Enter Une sate" type="date">
         </div>
-        <div class="mt-2 content-center">
-            <p class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
-                Technicien
-            </p>
-            <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="user_id">
-                @foreach($users as $user)
-                {{-- //TODO:add an condition fo only thecnicien who can make a projetc --}}
-                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
 
-        </div>
         <div class="mt-2 content-center">
             <p class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
                 Sites

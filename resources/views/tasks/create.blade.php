@@ -35,7 +35,7 @@
         </div>
         <div class="mt-8 content-center">
             <p class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
-                User
+                Projet
             </p>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="projet_id">
                 @foreach ($projets as $projet)

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Risk PDF Template</title>
+	<title>Risk PDF Report</title>
 	<style>
 		table {
 			border-collapse: collapse;
@@ -42,10 +42,17 @@
 
 <body>
 	<div class="container">
-		<h1>Risk Report</h1>
+		<h1>Projets Report</h1>
 	</div>
 	</br>
 	</br>
+	<h5>This report provides a brief overview of a list of projects undertaken within a specific timeframe. It offers a
+		concise
+		summary of the initiatives, their progress, and their relevance to the organization/company/team.<br />
+		Its purpose is to offer an informative and insightful overview of the organization's/project team's activities
+		and their
+		contribution to strategic goals.</h5>
+
 	</br>
 	<table>
 		<thead>
@@ -53,7 +60,6 @@
 				<th>#Num</th>
 				<th>Lib</th>
 				<th>Description</th>
-				<th>ADMIN</th>
 				<th>SITE</th>
 				<th>Projet start at</th>
 			</tr>
@@ -64,7 +70,6 @@
 				<td>{{ $item->id }}</td>
 				<td>{{ $item->name }}</td>
 				<td>{{ $item->description }}</td>
-				<td>{{ $item->user_name }}</td>
 				<td>{{ $item->site_name }}</td>
 				<td>{{ $item->proj_start }}</td>
 
@@ -77,12 +82,12 @@
 	</br>
 	</br>
 	<p>
-		Lieu : <br>
+		Lieu : SAFI/Maroc<br>
 		Date: {{ date('Y-m-d') }}<br>
 		Heure: {{ date('H:i:s') }}
 	</p>
 	<div class="signature-container">
-		<h6>Signature</h6>
+		<h4>Signature</h4>
 	</div>
 </body>
 

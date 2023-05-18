@@ -59,20 +59,13 @@ class UsersListTaskController extends Controller
         return redirect()->route('users_lists.index')->with('success', 'User List Task added successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request, UserListTask $userListTask)
-    {
-        if ($request->wantsJson()) {
-            return response()->json(['userListTask' => $userListTask]);
-        }
 
-        return view('users_lists.show', compact('userListTask'));
-    }
 
     public function destroy($id)
     {
+        /* `dd();` is a debugging function in Laravel that stands for "dump and die". It is used to dump a
+variable's contents and end the script's execution. In this case, it is being used to debug the
+`` variable by printing its contents and stopping the script's execution at that point. */
         // dd($id);
 
         $task = UserListTask::find($id);
@@ -80,8 +73,8 @@ class UsersListTaskController extends Controller
         if ($task) {
             // Task not found, handle the error as needed
             $task->delete();
-            return redirect()->route('users_lists.index')->with('success', 'User List Task deleted successfully');
+            return back()->with('success', 'User List Task deleted successfully');
         }
-        return redirect()->route('users_lists.index')->with('success', 'User List are NOTE  deleted successfully');
+        return back()->with('success', 'User List are NOTE  deleted successfully');
     }
 }

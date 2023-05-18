@@ -1,4 +1,4 @@
-@extends('sites.layout')
+@extends('sensibilisations.layout')
 
 @section('content')
 
@@ -6,7 +6,7 @@
     <!-- component -->
     <!-- component -->
     @csrf
-    <form class="mt-8 space-y-6 bg-gray-200 p-4 rounded-xl border-black" action="{{ route('sites.store') }}"
+    <form class="mt-8 space-y-6 bg-gray-200 p-4 rounded-xl border-black" action="{{ route('sensibilisations.store') }}"
         method="POST">
         @csrf
         <div>
@@ -25,7 +25,7 @@
             <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">Libellet</label>
             <input
                 class=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
-                name="name" placeholder="Libellet">
+                name="titre" placeholder="Libellet">
         </div>
         <div class="mt-8 content-center">
             <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
