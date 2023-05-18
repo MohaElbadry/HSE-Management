@@ -4,9 +4,7 @@
   <a href="https://github.com/MohaElbadry" target="_blank">
     <img alt="License: Mohammed-El-Badry" src="https://img.shields.io/badge/License-MOH--B-yellow.svg" />
   </a>
-  <a href="https://twitter.com/https:\/\/twitter.com\/mohammedbadry28" target="_blank">
-    <img alt="Twitter: https:\/\/twitter.com\/mohammedbadry28" src="https://img.shields.io/twitter/follow/https:\/\/twitter.com\/mohammedbadry28.svg?style=social" />
-  </a>
+  
 </p>
 
 > The project focuses on automating health, safety, and environment (HSE) management processes in the workplace. The current manual procedures have led to problems such as frequent accidents and a lack of real-time monitoring and reporting. By implementing an automated system, employees can easily access up-to-date safety guidelines and procedures through their mobile phones. This empowers them to make informed decisions, report incidents in real-time, and stay away from potential risks. Automation enhances overall organizational efficiency by reducing accidents, minimizing disruptions, and providing valuable data for proactive safety measures. The project aims to create a user-friendly solution that prioritizes employee well-being and contributes to a safer working environment.
