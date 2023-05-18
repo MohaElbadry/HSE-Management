@@ -1,66 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<h1 align="center">Welcome to HSE-Management 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-V1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/MohaElbadry" target="_blank">
+    <img alt="License: Mohammed-El-Badry" src="https://img.shields.io/badge/License-MOH--B-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/https:\/\/twitter.com\/mohammedbadry28" target="_blank">
+    <img alt="Twitter: https:\/\/twitter.com\/mohammedbadry28" src="https://img.shields.io/twitter/follow/https:\/\/twitter.com\/mohammedbadry28.svg?style=social" />
+  </a>
 </p>
 
-## About Laravel
+> The project focuses on automating health, safety, and environment (HSE) management processes in the workplace. The current manual procedures have led to problems such as frequent accidents and a lack of real-time monitoring and reporting. By implementing an automated system, employees can easily access up-to-date safety guidelines and procedures through their mobile phones. This empowers them to make informed decisions, report incidents in real-time, and stay away from potential risks. Automation enhances overall organizational efficiency by reducing accidents, minimizing disruptions, and providing valuable data for proactive safety measures. The project aims to create a user-friendly solution that prioritizes employee well-being and contributes to a safer working environment.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### ✨ [Demo](//URL//)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```sh
+npm install
+```
 
-## Learning Laravel
+## Usage
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. open Mobille APP
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```sh
+ cd .\W-PROJET-MOBILE\
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Start Mobille APP
 
-## Laravel Sponsors
+```sh
+npx expo start
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. Start Vite
 
-### Premium Partners
+```sh
+npx  run dev
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4. Start Laravel
 
-## Contributing
+```sh
+php artisan serve --host=192.168.0.0
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Use the IP adresse that will appre after startin The mobile App
 
-## Code of Conduct
+## Author
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+👤 **Mohammed El Badry**
 
-## Security Vulnerabilities
+-   Website: https://github.com/MohaElbadry
+-   Twitter: [@https:\/\/twitter.com\/mohammedbadry28](https://twitter.com/https://twitter.com/mohammedbadry28)
+-   Github: [@MohaElbadry](https://github.com/MohaElbadry)
+-   LinkedIn: [@https:\/\/www.linkedin.com\/in\/mohammed-el-badry-2305ab222\/](https://linkedin.com/in/https://www.linkedin.com/in/mohammed-el-badry-2305ab222/)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Show your support
 
-## License
+Give a ⭐️ if this project helped you!
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📝 License
+
+Copyright © 2023 [Mohammed El Badry](https://github.com/MohaElbadry).<br />
+This project is [MOH--B](https://github.com/MohaElbadry) licensed.
+
+---
