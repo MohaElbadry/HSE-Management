@@ -53,9 +53,7 @@ export default function AddEmergencie({ navigation }) {
     const handelAddRisk = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
-            if (!token._A) {
-            navigation.navigate("Login");
-        }
+          
             const response = await axios.post(
                 `${API_BASE_URL}/api/emergencies`,
                 {
@@ -69,6 +67,8 @@ export default function AddEmergencie({ navigation }) {
                     },
                 }
             );
+            await  navigation.navigate("Add");
+
         } catch (error) {
             console.error("Risk creation failed:", error);
         }

@@ -5,6 +5,7 @@ use App\Http\Controllers\EmergencieController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\RiskController;
+use App\Http\Controllers\SensibilisationController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UsersListTaskController;
@@ -37,6 +38,7 @@ Route::resource('emergencies', EmergencieController::class);
 Route::resource('documents', DocumentController::class);
 Route::resource('tasks', TaskController::class);
 Route::resource('users_lists', UsersListTaskController::class);
+Route::resource('sensibilisations', SensibilisationController::class);
 
 /*
 *PDF ROUTES

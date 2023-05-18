@@ -17,7 +17,6 @@ class CreateProjetsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
-            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('site_id')->constrained('sites');
             $table->date('proj_start')->nullable();
             $table->date('proj_end')->nullable();

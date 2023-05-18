@@ -26,16 +26,14 @@ export default function AddEmergencie({ navigation }) {
     const fetchData = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
-            if (!token._A) {
-            navigation.navigate("Login");
-        }
+
             const projects = await getProjects(token);
             setProjects(projects);
         } catch (error) {
             console.log("Error fetching projects:", error);
         }
     };
-//get all projets to take there id
+    //get all projets to take there id
     const getProjects = async (token) => {
         try {
             const response = await axios.get(`${API_BASE_URL}/api/projets`, {
@@ -54,8 +52,8 @@ export default function AddEmergencie({ navigation }) {
     const handleProjectChange = (projectId) => {
         setSelectedProjectId(projectId);
     };
-    //Creat Incident methode 
-    
+    //Creat Incident methode
+
     const handelAddRisk = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
@@ -72,6 +70,8 @@ export default function AddEmergencie({ navigation }) {
                     },
                 }
             );
+            //wait tel they add a Task than return to the page ADD
+            await navigation.navigate("Add");
         } catch (error) {
             console.error("Risk creation failed:", error);
         }

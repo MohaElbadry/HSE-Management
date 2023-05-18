@@ -11,10 +11,10 @@ export default function AddRisk({ navigation }) {
     const [description, setDescription] = useState("");
     const [projects, setProjects] = useState([]);
     const [selectedProjectId, setSelectedProjectId] = useState(-1);
-/**
- * This function fetches projects from an API using a token for authorization and sets the projects in
- * state.
- */
+    /**
+     * This function fetches projects from an API using a token for authorization and sets the projects in
+     * state.
+     */
 
     useEffect(() => {
         fetchData();
@@ -23,9 +23,7 @@ export default function AddRisk({ navigation }) {
     const fetchData = async () => {
         try {
             const token = await SecureStore.getItemAsync("token");
-            if (!token) {
-                navigation.navigate("Login");
-            }
+
             const projects = await getProjects(token);
             setProjects(projects);
         } catch (error) {
@@ -58,29 +56,31 @@ export default function AddRisk({ navigation }) {
         setSelectedProjectId(projectId);
     };
 
-/**
- * This function adds a new risk to a project using an API call with authorization.
- */
- const handelAddRisk = async () => {
-  try {
-    const token = await SecureStore.getItemAsync("token");
-    const response = await axios.post(
-      `${API_BASE_URL}/api/risks`,
-      {
-        projet_id: selectedProjectId,
-        lib: lib,
-        description: description,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  } catch (error) {
-    console.error("Risk creation failed:", error);
-  }
-};
+    /**
+     * This function adds a new risk to a project using an API call with authorization.
+     */
+    const handelAddRisk = async () => {
+        try {
+            const token = await SecureStore.getItemAsync("token");
+            const response = await axios.post(
+                `${API_BASE_URL}/api/risks`,
+                {
+                    projet_id: selectedProjectId,
+                    lib: lib,
+                    description: description,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            //wait tel they add a Task than return to the page ADD
+            await navigation.navigate("Add");
+        } catch (error) {
+            console.error("Risk creation failed:", error);
+        }
+    };
 
     return (
         <View
