@@ -24,16 +24,18 @@
             <nav aria-label="Global" class="mx-auto max-w-container px-4 sm:px-6 lg:px-8">
                 <div class="relative flex items-center py-[2.125rem]">
                     <a class="mr-auto flex-none text-slate-900" href="/">
-                        <img src=" {{ asset('1.png') }} " class="w-20 h-10" alt="" />
+                        <img src=" {{ asset('11.png') }} " class="w-20 h-10" alt="" />
                     </a>
 
                     <div class="hidden lg:ml-8 lg:flex lg:items-center lg:border-l lg:border-slate-900/15 lg:pl-8">
-                        <a href="/login">Sign in</a>
+
+
                         <a class="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-slate-900 text-white hover:bg-slate-700 -my-2.5 ml-8"
-                            href="/register">
-                            <span>Get all-access <span aria-hidden="true">→</span>
+                            href="/login">
+                            <span>Log In <span aria-hidden="true">→</span>
                             </span>
                         </a>
+
                     </div>
                 </div>
             </nav>
@@ -62,12 +64,11 @@
 
 
                             <div class="mt-10 flex gap-4">
-                                <a href="/login"
-                                    class="inline-flex justify-center rounded-lg text-sm font-semibold py-3 px-4 bg-slate-900 text-white hover:bg-slate-700"
-                                    >
+                                <a href="/register"
+                                    class="inline-flex justify-center rounded-lg text-sm font-semibold py-3 px-4 bg-slate-900 text-white hover:bg-slate-700">
                                     <span>
                                         <span class="inline-flex items-center">
-                                            <span>Sign In</span>
+                                            <span>Sign Up</span>
                                             <svg viewBox="0 0 20 20" class="ml-1.5 h-5 w-5 fill-slate-400"
                                                 fill-rule="evenodd" clip-rule="evenodd">
                                                 <path
@@ -167,7 +168,7 @@
 
         <footer class="mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8">
             <div class="border-t border-slate-900/5 py-10">
-                <img src=" {{ asset('1.png') }} " class=" h-10 mx-auto  w-auto" alt="" />
+                <img src=" {{ asset('11.png') }} " class=" h-10 mx-auto  w-auto" alt="" />
 
                 <p class="mt-5 text-center text-sm leading-6 text-slate-500">© 2023 YaneCode Digitale Labs Inc. All
                     rights

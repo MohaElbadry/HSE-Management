@@ -25,8 +25,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//home page
 Route::get('/home', function () {
+    return view('welcome');
+})->name('home');
+//redirect to the home page named welcome
+Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
