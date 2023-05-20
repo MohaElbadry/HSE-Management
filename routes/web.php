@@ -34,37 +34,37 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// Login Routes
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+// Authentication routes
+Route::middleware('guest')->group(function () {
+    // Login Routes
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// Registration Routes
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
-
+    // Registration Routes
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
+});
 // Logout Route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::middleware('auth')->group(function () {
+    // Routes that require authentication
+    Route::resource('users', UserController::class);
+    Route::resource('sites', SiteController::class);
+    Route::resource('projets', ProjetController::class);
+    Route::resource('risks', RiskController::class);
+    Route::resource('incidents', IncidentController::class);
+    Route::resource('emergencies', EmergencieController::class);
+    Route::resource('documents', DocumentController::class);
+    Route::resource('tasks', TaskController::class);
+    Route::resource('users_lists', UsersListTaskController::class);
+    Route::resource('sensibilisations', SensibilisationController::class);
 
-Route::resource('users', UserController::class);
-Route::resource('sites', SiteController::class);
-Route::resource('projets', ProjetController::class);
-Route::resource('risks', RiskController::class);
-Route::resource('incidents', IncidentController::class);
-Route::resource('emergencies', EmergencieController::class);
-Route::resource('documents', DocumentController::class);
-Route::resource('tasks', TaskController::class);
-Route::resource('users_lists', UsersListTaskController::class);
-Route::resource('sensibilisations', SensibilisationController::class);
-
-/*
-*PDF ROUTES
-*/
-Route::get('risks-pdf', [RiskController::class, 'pdf']);
-Route::get('projets-pdf', [ProjetController::class, 'pdf']);
-Route::get('pdf_Globale', [ProjetController::class, 'Global_Pdf']);
-
-
+    // PDF routes
+    Route::get('risks-pdf', [RiskController::class, 'pdf']);
+    Route::get('projets-pdf', [ProjetController::class, 'pdf']);
+    Route::get('pdf_Globale', [ProjetController::class, 'Global_Pdf']);
+});
 
 
 
