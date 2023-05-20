@@ -46,19 +46,6 @@ class DocumentController extends Controller
         return redirect()->route('documents.index')->with('success', 'Document uploaded successfully.');
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'lib' => 'required',
-    //         'description' => 'required',
-    //         'fichier' => 'required',
-    //     ]);
-    //     $input = $request->all();
-    //     Document::create($input);
-    //     return redirect()->route('documents.index')
-    //         ->with('success', 'Sites Added succ');
-    // }
-
     /**
      * Display the specified resource.
      */
