@@ -5,20 +5,21 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function Projet({ navigation }) {
     return (
+       /* This is a React Native component that renders a page for adding complaints. It includes a three buttons for adding different types of
+       complaints. 
+        The `navigation` prop is used to handle navigation between different screens. */
         <View
-            className="flex-1  "
-            style={{
-                backgroundColor: "#F6F6F6",
-            }}
+            className="flex-1 bg-white "
+            
         >
-            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#1B2223] px-4 pb-8 pt-16 drop-shadow-xl">
+            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#8D8CF5] px-4 pb-8 pt-16 drop-shadow-xl">
                 <AntDesign
                     name="arrowleft"
                     size={24}
                     color="white"
                     onPress={() => navigation.goBack()}
                 />
-                <Text className="text-start text-xl font-extrabold text-white"></Text>
+                <Text className="text-start text-xl font-bold text-white">Complaint Page</Text>
                 <Text className="text-xl font-extrabold  text-[#4DCFC0]">
                     {"  "}
                 </Text>
@@ -26,26 +27,26 @@ export default function Projet({ navigation }) {
 
             <View className="mt-24 flex items-center justify-center pl-5">
                 <TouchableOpacity
-                    className="mb-4 rounded-2xl bg-[#32E0C4] p-3  shadow-xl"
+                    className="mb-4 rounded-2xl bg-[#4361ee] p-3  shadow-xl"
                     onPress={() => navigation.navigate("AddIncident")}
                 >
-                    <Text className="px-4 py-2 text-3xl font-semibold text-[#2D2727]">
+                    <Text className="px-4 py-2 text-3xl font-semibold text-white">
                         Add incidenet
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    className="mb-4 rounded-2xl  bg-[#F15412] p-3  shadow-xl"
+                    className="mb-4 rounded-2xl  bg-[#4361ee] p-3  shadow-xl"
                     onPress={() => navigation.navigate("AddRisk")}
                 >
-                    <Text className="px-4 py-2 text-3xl font-semibold text-[#6F0000]">
+                    <Text className="px-4 py-2 text-3xl font-semibold text-white">
                         Add Risk
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    className="mb-4 rounded-2xl  bg-[#D21312]  p-3  shadow-xl"
+                    className="mb-4 rounded-2xl  bg-[#4361ee]  p-3  shadow-xl"
                     onPress={() => navigation.navigate("AddEmergencie")}
                 >
-                    <Text className="px-4 py-2 text-3xl font-semibold text-[#F0EB8D]">
+                    <Text className="px-4 py-2 text-3xl font-semibold text-white">
                         Add Emergencie
                     </Text>
                 </TouchableOpacity>
@@ -67,7 +68,7 @@ export default function Projet({ navigation }) {
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Add")}
                     >
-                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000]">
+                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#8D8CF5] ">
                             <AntDesign
                                 name="pluscircleo"
                                 size={28}

@@ -12,7 +12,7 @@
             <button type='button'
                 class='flex  break-inside  rounded-3xl px-8  bg-white dark:bg-slate-800 dark:text-white'>
                 <div class='flex items-center justify-between flex-1'>
-                    <a class='text-lg font-medium text-white' href="/sites">Back</a>
+                    <a class='text-lg font-medium text-white' href="{{ URL::previous() }}">Back</a>
 
                 </div>
             </button>
@@ -37,7 +37,7 @@
             </p>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="task_id">
                 @foreach ($tasks as $task)
-                <option value="{{ $task->id }}" @if ($task->id == request('task_id'))  selected @endif>
+                <option value="{{ $task->id }}" @if ($task->id == request('task_id')) selected @endif>
                     {{ $task->lib }}
                 </option>
                 @endforeach

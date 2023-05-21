@@ -20,7 +20,9 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        $projets = Projet::all();
+        $projets = Projet::join('sites', 'projets.site_id', '=', 'sites.id')
+            ->select('projets.*', 'sites.name as site_name')
+            ->get();
         if (request()->wantsJson()) {
             return response()->json(['projets' => $projets]);
         }

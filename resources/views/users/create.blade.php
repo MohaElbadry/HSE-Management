@@ -50,7 +50,6 @@
                 <option value="">--choose---</option>
                 <option value="U">User</option>
                 <option value="A">Admin</option>
-                <option value="T">Technicien</option>
             </select>
 
         </div>

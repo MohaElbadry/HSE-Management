@@ -34,6 +34,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+/* This code block defines the authentication routes for the application. It specifies that the
+`LoginController` should handle the login and logout routes, and the `RegisterController` should
+handle the registration routes. The `guest` middleware is used to ensure that only non-authenticated
+users can access the login and registration pages. The `name` method is used to give a name to each
+route, which can be used to generate URLs or redirect to specific pages. Finally, the `logout` route
+is defined separately as a `POST` request to the `LoginController`'s `logout` method. */
 // Authentication routes
 Route::middleware('guest')->group(function () {
     // Login Routes
@@ -41,12 +47,18 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 
     // Registration Routes
+    //when the user register its auto redirect to the login page to see his role
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
 });
 // Logout Route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+/* This code block defines a group of routes that require authentication. The
+`Route::middleware('auth')` method specifies that the routes in the group can only be accessed by
+authenticated users. The group includes several resource routes for controllers such as
+`UserController`, `SiteController`... Additionally, there are three PDF routes for generating PDF files for
+risks, projets, and a global PDF. */
 Route::middleware('auth')->group(function () {
     // Routes that require authentication
     Route::resource('users', UserController::class);

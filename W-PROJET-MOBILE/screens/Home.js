@@ -1,12 +1,12 @@
 import { Image, Text, View, TouchableOpacity } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
-import { API_BASE_URL } from "../IP";
 
 export default function Home({ navigation }) {
-
-
     return (
+        /* The code is defining a React Native component called "Home" that renders a view with an
+       image, some text, and a button.
+        The button is a TouchableOpacity component that navigates to the "Login" screen
+       when pressed.
+        */
         <View
             className="mt-4 flex-1 flex-col  items-center justify-center "
             style={{
@@ -23,19 +23,19 @@ export default function Home({ navigation }) {
             >
                 <Image
                     source={require("../assets/HSE-2.2png.png")}
-                    className="mt-240 bg-white h-2/3 w-80  rotate-180 items-center self-center from-neutral-50 drop-shadow-xl"
+                    className="mt-240 h-2/3 w-80 rotate-180  items-center self-center bg-white from-neutral-50 drop-shadow-xl"
                 />
             </View>
             <View className="w-full basis-1/3 flex-col  items-center ">
-                <Text className=" mt-7  font-bold">
+                <Text className=" mt-7  text-2xl font-bold text-[#1a1613]">
                     Better safe than sorry."
                 </Text>
-                <Text className="mt-5 px-9 text-xs ">
+                <Text className="mt-5 px-9  text-xs font-semibold text-[#E1FOD7] ">
                     Prioritize safety, health, and the environment with our app.
                     Ensure a secure and sustainable future for all.
                 </Text>
                 <TouchableOpacity
-                    className="absolute bottom-10 mt-8 h-12 w-60 justify-center self-center rounded-lg bg-cyan-600 shadow-lg"
+                    className="absolute bottom-10 mt-8 h-12 w-60 justify-center self-center rounded-lg bg-[#8D8CF5]  shadow-lg"
                     onPress={() => navigation.navigate("Login")}
                 >
                     <Text className=" self-center text-xl font-bold text-white">

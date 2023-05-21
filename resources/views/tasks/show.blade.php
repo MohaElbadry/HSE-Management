@@ -10,6 +10,7 @@
         <h2 class="text-gray-600 font-semibold">Task : {{$task->lib}} </h2>
         <h5 class="text-gray-600 text-start text-2xl font-semibold">Projet : {{$projectName}} </h5>
         @if ($message = Session::get('success'))
+
         <div class="max-w-lg mx-auto">
           <div class="flex bg-blue-100 rounded-lg p-4 mb-4 text-sm text-blue-700" role="alert">
             <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -44,6 +45,12 @@
       </div>
     </div>
     <div>
+      <div class=" mb-3 w-full items-center">
+        <p class="text-blue-600 font-semibold">
+
+          {{$task->description}}
+          <p />
+      </div>
       <table class="min-w-full leading-normal">
         <thead>
           <tr>

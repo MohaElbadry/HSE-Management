@@ -8,6 +8,8 @@ import axios from "axios";
 import { API_BASE_URL } from "../IP.js";
 
 export default function UserTasksList({ navigation }) {
+    /* This code is defining a functional component called `UserTasksList` that displays a list of
+    tasks for a user. */
     const [lists, setLists] = useState([]);
 
     useEffect(() => {
@@ -47,20 +49,13 @@ export default function UserTasksList({ navigation }) {
     };
 
     return (
-        <View
-            className="flex-1  "
-            style={{
-                backgroundColor: "#F6F1E9",
-            }}
-        >
+        <View className="flex-1  bg-white">
             <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="px-2 text-4xl font-semibold text-black">
-                    HSE_Mnagement
+                <Text className="px-2 text-4xl font-semibold text-dark">
+                    List of Your Tasks
                 </Text>
 
-                <Text className="text-sl mx-4 mt-2 pb-4 text-center font-normal text-[#16c599]">
-                    Explore Our sensibility Post
-                </Text>
+                
             </View>
 
             <FlatList
@@ -70,16 +65,16 @@ export default function UserTasksList({ navigation }) {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl  bg-[#FF6000] p-4 shadow-xl">
+                    <TouchableOpacity className="m-3 rounded-2xl  bg-[#8D8CF5] p-4 shadow-xl">
                         <View>
                             <View>
-                                <Text className="text-xl font-semibold">
+                                <Text className="text-xl font-semibold text-white">
                                     {item.task_lib}
                                 </Text>
-                                <Text className="text-center text-gray-500">
+                                <Text className="text-center text-[#ed9b28]">
                                     {item.tasks_description}
                                 </Text>
-                                <Text className="text-end text-gray-300">
+                                <Text className="text-end text-gray-200">
                                     {item.created_at}
                                 </Text>
                             </View>
@@ -104,7 +99,7 @@ export default function UserTasksList({ navigation }) {
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Add")}
                     >
-                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000]">
+                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#8D8CF5] ">
                             <AntDesign
                                 name="pluscircleo"
                                 size={28}

@@ -8,45 +8,22 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    /* The `protected  = '/login';` property is setting the URL that the user will be redirected
+to after they have successfully registered. In this case, the user will be redirected to the login
+page. */
+    protected $redirectTo = '/login';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -58,10 +35,16 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
+     * The function creates a new user with the given data and hashed password.
+     * 
+     * @param array data  is an array that contains the user's information such as name, email,
+     * role, and password. This function is used to create a new user in the database by passing the
+     * user's information to the User model's create method. The password is hashed using Laravel's
+     * Hash::make method before being
+     * 
+     * @return The `create()` method is returning a new `User` instance that is created with the
+     * provided `` array. The `` array contains the user's name, email, role, and password.
+     * The password is hashed using the `Hash::make()` method before being stored in the database.
      */
     protected function create(array $data)
     {
@@ -71,5 +54,24 @@ class RegisterController extends Controller
             'role' => $data['role'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * This function registers a new user and redirects them to a specified page.
+     * 
+     * @param Request request  is an instance of the Request class which contains the data sent
+     * by the user through an HTTP request. It includes information such as the HTTP method, headers,
+     * and any data submitted in the request body. In this case, it is used to retrieve the data
+     * submitted by the user during registration.
+     * 
+     * @return a redirect to the URL specified in the `` property of the class.
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        return redirect($this->redirectTo);
     }
 }

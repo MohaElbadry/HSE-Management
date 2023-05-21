@@ -118,7 +118,7 @@ export default function AddEmergencie({ navigation }) {
                 </View>
                 <View className="w-full flex-col   ">
                     <Text className="col-start-1 mx-7 mt-4 w-fit">
-                        Projet Id
+                        Projet 
                     </Text>
                     <Picker
                         style={{
@@ -154,7 +154,7 @@ export default function AddEmergencie({ navigation }) {
             </View>
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
-                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-teal-400 shadow-lg"
+                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#8D8CF5] shadow-lg"
                     onPress={handelAddRisk}
                 >
                     <Text className=" self-center text-xl text-white">ADD</Text>

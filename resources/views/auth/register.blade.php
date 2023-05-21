@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/app.css')
+    
 </head>
 <!-- component -->
 
@@ -130,7 +131,8 @@
                             </button>
                         </div>
                         <hr class="mb-6 border-t" />
-
+                        <!-- component -->
+                        
                         <div class="text-center">
                             <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                                 href="/login">
@@ -142,6 +144,10 @@
             </div>
         </div>
     </div>
+
+
+
+
 </body>
 
 </html>

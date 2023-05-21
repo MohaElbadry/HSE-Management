@@ -13,6 +13,7 @@
     <link rel="modulepreload" href="https://tailwindui.com/build/assets/_commonjsHelpers-87174ba5.js" />
     <link rel="stylesheet" href="https://tailwindui.com/build/assets/app-fb087be6.css" />
     <script type="module" src="https://tailwindui.com/build/assets/app-e0f43721.js"></script>
+
     <title inertia>Keynote - Tailwind CSS Conference Template</title>
 </head>
 
@@ -161,6 +162,7 @@
                             collaboration by facilitating communication, sharing best practices, and engaging
                             employees in HSE initiatives.</p>
                         <p><strong> </strong> — </p>
+
                     </div>
                 </section>
             </div>

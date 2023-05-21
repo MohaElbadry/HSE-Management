@@ -47,7 +47,7 @@ export default function ProjSites({ navigation }) {
         <View
             className="flex-1  "
             style={{
-                backgroundColor: "#0C134F",
+                backgroundColor: "#8D8CF5",
             }}
         >
             <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-10 ">
@@ -55,7 +55,7 @@ export default function ProjSites({ navigation }) {
                     Our Projet and Sites
                 </Text>
             </View>
-            <Text className="px-2 pt-2 text-center text-xl font-semibold text-gray-500">
+            <Text className="px-2 pt-2 text-center text-xl font-semibold text-dark">
                 Our Sites
             </Text>
             <FlatList
@@ -82,7 +82,7 @@ export default function ProjSites({ navigation }) {
                     </TouchableOpacity>
                 )}
             />
-            <Text className="px-2 text-center text-xl font-semibold text-gray-500">
+            <Text className="px-2 text-center text-xl font-semibold text-dark">
                 Our projectsr
             </Text>
             <FlatList
@@ -129,7 +129,7 @@ export default function ProjSites({ navigation }) {
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Add")}
                     >
-                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000]">
+                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#8D8CF5] ">
                             <AntDesign
                                 name="pluscircleo"
                                 size={28}

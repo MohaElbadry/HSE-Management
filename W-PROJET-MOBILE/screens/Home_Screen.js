@@ -8,6 +8,17 @@ import axios from "axios";
 import { API_BASE_URL } from "../IP.js";
 
 export default function Pat_Home_Screen({ navigation }) {
+    /* 
+    * This function fetches a list of sensibilisations (projects) from an API using a token for authorization.
+    *
+    call the `fetchData` function when the component mounts.
+    The `fetchData` function first retrieves a token from the device's secure store using the `SecureStore` API.
+    If the token is not found, the user is redirected to the login screen. 
+    Otherwise, the `getProjects` function is called with the retrieved token.
+    The `getProjects` function makes a GET request to the API  endpoint and extracts the array of projects from the response data.
+    If an error occurs, the user is redirected to the login screen and an empty array is returned.
+    *
+    */
     const [sensibilisations, setSensibilisations] = useState([]);
 
     useEffect(() => {
@@ -52,12 +63,9 @@ export default function Pat_Home_Screen({ navigation }) {
             }}
         >
             <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="px-2 text-4xl font-semibold text-black">
-                    HSE_Mnagement
-                </Text>
-
-                <Text className="text-sl mx-4 mt-2 pb-4 text-center font-normal text-[#16c599]">
-                    Explore Our sensibility Post
+                <Text className="px-2 text-2xl font-semibold text-[#0c3330]">
+                    Let's create an optimal work environment together for better
+                    productivity
                 </Text>
             </View>
 
@@ -68,16 +76,16 @@ export default function Pat_Home_Screen({ navigation }) {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl bg-white p-4 shadow-xl shadow-orange-300">
+                    <TouchableOpacity className="m-3 rounded-2xl bg-[#8D8CF5] p-4 shadow-xl shadow-orange-300">
                         <View>
                             <View>
-                                <Text className="text-xl font-semibold">
+                                <Text className="text-xl font-semibold text-white">
                                     {item.titre}
                                 </Text>
-                                <Text className="text-center text-gray-500">
+                                <Text className="text-center text-[#ed9b28]">
                                     {item.description}
                                 </Text>
-                                <Text className=" text-end text-gray-300">
+                                <Text className=" text-end text-gray-400">
                                     {item.created_at}
                                 </Text>
                             </View>
@@ -102,7 +110,7 @@ export default function Pat_Home_Screen({ navigation }) {
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Add")}
                     >
-                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#FF0000]">
+                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#8D8CF5] ">
                             <AntDesign
                                 name="pluscircleo"
                                 size={28}

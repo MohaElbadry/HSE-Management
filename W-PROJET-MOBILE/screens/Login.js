@@ -15,6 +15,7 @@ import { API_BASE_URL } from "../IP";
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
     /**
      * This function handles the process of logging in a user by sending a POST request to the API with
@@ -29,6 +30,7 @@ export default function Login({ navigation }) {
             });
             const token = response.data.token;
             // Store the token securely using Expo's SecureStore
+            // console.log(token);
             getUserinfo(token);
             // Navigate to the home page or any other desired screen
         } catch (error) {
@@ -44,14 +46,17 @@ export default function Login({ navigation }) {
                 },
             });
             const user = response.data.user;
-            const userString = JSON.stringify(user);
-            // Extract the array of projects
-            await SecureStore.setItemAsync("token", token);
-            await SecureStore.setItemAsync("user", userString);
-
-            navigation.navigate("Home_Screen");
+            if (user.role === "U") {
+                const userString = JSON.stringify(user);
+                // Extract the array of projects
+                await SecureStore.setItemAsync("token", token);
+                await SecureStore.setItemAsync("user", userString);
+                navigation.navigate("Home_Screen");
+            } else {
+                setMessage("Invalid password. Please try again.");
+            }
         } catch (error) {
-        navigation.navigate("Login");
+            navigation.navigate("Login");
             return [];
         }
     };
@@ -70,7 +75,7 @@ export default function Login({ navigation }) {
                     source={require("../assets/1.png")}
                     className="h-20  w-80  from-neutral-50 drop-shadow-xl"
                 />
-                <Text className="  mt-3 text-xl font-medium ">
+                <Text className="  mt-3 text-xl font-bold  text-[#1a1613] ">
                     Login As A User
                 </Text>
             </View>
@@ -85,6 +90,8 @@ export default function Login({ navigation }) {
                         onChangeText={(text) => setEmail(text)}
                     />
                 </View>
+                {message && <Text style={{ color: "red" }}>{message}</Text>}
+
                 <View className="w-full flex-col   ">
                     <Text className="col-start-1 mx-7 mt-4 w-fit">
                         Password
@@ -92,13 +99,14 @@ export default function Login({ navigation }) {
                     <TextInput
                         className="border-1 mx-7 h-10 w-80 rounded-md  border-gray-400 bg-white p-2 shadow-sm "
                         placeholder={"At least 8 characters"}
-                        onChangeText={(text) => setPassword(text)}
+                        onChangeText={(pass) => setPassword(pass)}
+                        secureTextEntry={true}
                     />
                 </View>
             </View>
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
-                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-teal-400 shadow-lg"
+                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#8D8CF5]  shadow-lg"
                     onPress={handelLogin}
                 >
                     <Text className=" self-center text-xl text-white">

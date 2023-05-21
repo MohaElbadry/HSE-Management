@@ -28,7 +28,12 @@ Route::post('login', [PassportController::class, 'login']);
 
 
 
-Route::middleware(['auth:api'])->group(function () {
+/* This code block defines a group of routes that require authentication and a specific role to access.
+*The middleware `auth:api` checks if the user is authenticated  And
+*`role` middleware checks if the Role=>User for the mobile interface
+*user has the required role. If the user is authenticated and has the required role, they can access
+*the routes defined in the group. */
+Route::middleware(['auth:api', 'role'])->group(function () {
     Route::resource('sites', SiteController::class)->only(['index', 'show',]);
     Route::get('userinfo', [PassportController::class, 'userinfo']);
     Route::resource('projets', ProjetController::class)->only(['index', 'show',]);
