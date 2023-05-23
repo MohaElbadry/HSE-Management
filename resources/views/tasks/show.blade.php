@@ -6,8 +6,8 @@
 <div class="flex h-full bg-viollet-300  pt-3 justify-center bg-white text-center text-5xl font-bold shadow-md">
   <div class="bg-white px-8 rounded-md w-full">
     <div class=" flex items-center justify-between pb-6">
-      <div>
-        <h2 class="text-gray-600 font-semibold">Task : {{$task->lib}} </h2>
+      <div class="w-full">
+        <h2 class="text-gray-600 font-semibold">{{$task->lib}} </h2>
         <h5 class="text-gray-600 text-start text-2xl font-semibold">Projet : {{$projectName}} </h5>
         @if ($message = Session::get('success'))
 

@@ -96,16 +96,14 @@
                                 <p class="p mt-1"> {{$i->description}}
                                     </br>
                                 </p>
-                                <p class="p text-gray-600">
-                                    Show all User Affected to this Task
-                                </p>
+                                
 
                                 <div class="w-8 h-8">
                                     <form action="{{ route('tasks.destroy', $i->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="" type="submit">
-                                            <img class="shadow-white mt-3 w-8 h-8"
+                                            <img class="shadow-white mt-1 w-8 h-8"
                                                 src=" {{ asset('/icons/poubelle.png') }} " alt="EDITe">
                                         </button>
                                     </form>
@@ -119,9 +117,6 @@
                 </div>
             </section>
         </div>
-
-        {{--
-        --}}
     </div>
 </div>
 </div>

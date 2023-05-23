@@ -43,7 +43,6 @@
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="role">
                 <option value="U" {{ $user->role == 'U' ? 'selected' : '' }}>User</option>
                 <option value="A" {{ $user->role == 'A' ? 'selected' : '' }}>Admin</option>
-                <option value="T" {{ $user->role == 'T' ? 'selected' : '' }}>Technician</option>
 
             </select>
         </div>

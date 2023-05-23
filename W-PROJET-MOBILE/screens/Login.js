@@ -24,13 +24,15 @@ export default function Login({ navigation }) {
      */
     const handelLogin = async () => {
         try {
+            setMessage("");
             const response = await axios.post(`${API_BASE_URL}/api/login`, {
                 email,
                 password,
             });
+            if (response.data.Fail) {
+                setMessage(response.data.Fail);
+            }
             const token = response.data.token;
-            // Store the token securely using Expo's SecureStore
-            // console.log(token);
             getUserinfo(token);
             // Navigate to the home page or any other desired screen
         } catch (error) {
@@ -51,6 +53,8 @@ export default function Login({ navigation }) {
                 // Extract the array of projects
                 await SecureStore.setItemAsync("token", token);
                 await SecureStore.setItemAsync("user", userString);
+                setEmail("");
+                setPassword("");
                 navigation.navigate("Home_Screen");
             } else {
                 setMessage("Invalid password. Please try again.");
@@ -90,7 +94,10 @@ export default function Login({ navigation }) {
                         onChangeText={(text) => setEmail(text)}
                     />
                 </View>
-                {message && <Text style={{ color: "red" }}>{message}</Text>}
+
+<div className="Main">
+    <h1>Mhzoooz ANA</h1>
+    </div>
 
                 <View className="w-full flex-col   ">
                     <Text className="col-start-1 mx-7 mt-4 w-fit">
@@ -99,9 +106,22 @@ export default function Login({ navigation }) {
                     <TextInput
                         className="border-1 mx-7 h-10 w-80 rounded-md  border-gray-400 bg-white p-2 shadow-sm "
                         placeholder={"At least 8 characters"}
+                        value={{ password }}
                         onChangeText={(pass) => setPassword(pass)}
                         secureTextEntry={true}
                     />
+                    {message && (
+                        <Text
+                            class=" mx-7 font-semibold text-red-500"
+                            style={{
+                                color: "red",
+                                fontWeight: "bold",
+                                marginHorizontal: 30,
+                            }}
+                        >
+                            {message}
+                        </Text>
+                    )}
                 </View>
             </View>
             <View className=" mx-10 mt-20">

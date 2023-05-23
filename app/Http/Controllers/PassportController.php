@@ -50,6 +50,8 @@ class PassportController extends Controller
         if ($user && Hash::check($request->password, $user->password)) {
             $token = $user->createToken('MOHAlARVAEL')->accessToken;
             return response()->json(['token' => $token], 200);
+        } else {
+            return response()->json(['Fail' => 'Error Unauthenticated']);
         }
     }
 

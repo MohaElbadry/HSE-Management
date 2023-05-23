@@ -24,7 +24,7 @@
                 </div>
                 @endif
                 {{-- this is the icone Plus for creation --}}
-                <a class="" href="/emergencies/create">
+                <a class="" href="/incidents/create">
                     <img class="shadow-white w-8 h-8 mt-5" src=" {{ asset('/icons/plus.png') }} " alt="ADD">
                 </a>
             </div>
