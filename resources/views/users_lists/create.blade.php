@@ -21,7 +21,7 @@
         <input type="hidden" name="remember" value="true">
         <div class="mt-8 content-center">
             <p class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
-                PROJET
+                Users
             </p>
             <select class="form-select text-base px-4 py-2 border-b rounded-2xl" name="user_id">
                 @foreach ($users as $user)

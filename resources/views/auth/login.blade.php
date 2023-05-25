@@ -61,7 +61,7 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="mb-4 md:flex md:justify-between">
+                        <div class="mb-4 ">
                             <div class="mb-4 md:mr-2 md:mb-0">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
                                     Password

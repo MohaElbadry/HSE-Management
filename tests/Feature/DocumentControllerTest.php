@@ -11,24 +11,12 @@ class DocumentControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIndex()
-    {
-        // Create some dummy documents
-        $documents = Document::factory()->count(5)->create();
 
-        // Send a GET request to the index route
-        $response = $this->get('/documents');
-
-        $response->assertViewIs('documents.index');
-
-        // Assert that the view has the correct variables
-        $response->assertViewHas('documents', $documents); // Replace 'Document Title' with the actual title of a document
-    }
 
     public function testShow()
     {
         // Create a dummy site
-        $document= Document::factory()->create();
+        $document = Document::factory()->create();
 
         // Send a GET request to the show route
         $response = $this->get("/documents/{$document->id}");

@@ -9,15 +9,7 @@
     <form class="mt-8 space-y-6 bg-gray-200 p-4 rounded-xl border-black" action="{{ route('sensibilisations.store') }}"
         method="POST">
         @csrf
-        <div>
-            <button type='button'
-                class='flex  break-inside  rounded-3xl px-8  bg-white dark:bg-slate-800 dark:text-white'>
-                <div class='flex items-center justify-between flex-1'>
-                    <a class='text-lg font-medium text-white' href="/sites">All Products</a>
-
-                </div>
-            </button>
-        </div>
+        
         <h3>Create</h3>
         <input type="hidden" name="remember" value="true">
         <div class="relative">

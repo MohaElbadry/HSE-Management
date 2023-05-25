@@ -69,7 +69,6 @@
                             <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
                                 Email
                             </label>
-                            //TODO:ROLE
                             <input type="text" name="role" value="U" hidden />
                             <input id="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"

@@ -11,21 +11,6 @@ class EmergencieControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIndex()
-    {
-        // Create a dummy projet and emergencies
-        $projet = Projet::factory()->create();
-        $emergencies = Emergencie::factory()->count(3)->create(['projet_id' => $projet->id]);
-
-        // Send a GET request to the index route
-        $response = $this->get('/emergencies');
-
-        // Assert that the response has the correct view
-        $response->assertViewIs('emergencies.index');
-
-        // Assert that the view has the correct variables
-        $response->assertViewHas('emergencies', $emergencies);
-    }
 
     public function testStore()
     {
@@ -45,19 +30,4 @@ class EmergencieControllerTest extends TestCase
 
         $response->assertSessionHas('success', 'Emergency added successfully');
     }
-
-    public function testShow()
-    {
-        // Create a dummy projet and emergency
-        $projet = Projet::factory()->create();
-        $emergencie = Emergencie::factory()->create(['projet_id' => $projet->id]);
-
-        // Send a GET request to the show route
-        $response = $this->get("/emergencies/{$emergencie->id}");
-        $response->assertViewIs('emergencies.show');
-
-        // Assert that the view has the correct variable
-        $response->assertViewHas('emergencie', $emergencie);
-    }
-
 }

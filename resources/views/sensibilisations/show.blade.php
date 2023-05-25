@@ -52,21 +52,21 @@
 
 <body>
   <div class="flex min-h-screen flex-row bg-gray-100 text-gray-800">
-   <aside
+    <aside
       class="sidebar w-48 -translate-x-full transform bg-[#1B2223] p-4 transition-transform duration-150 ease-in md:translate-x-0 md:shadow-md">
       <div class="my-4">
         <!-- Left side NavBar -->
-    
+
         <div>
           <!-- App Logo -->
-    
-          <img class="shadow-white bg" src=" {{ asset('1.png') }} " alt="">
-    
+
+          <img class="shadow-white  bg" src=" {{ asset('1.png') }} " alt="">
+
         </div>
-    
+
         <ul class="mt-2 text-gray-700 dark:text-gray-400 capitalize">
           <!-- Links -->
-    
+
           <li class="mt-3 p-2 text-blue-600 dark:text-blue-300 rounded-lg">
             <a href="/sites" class=" flex flex-col items-center">
               <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -77,9 +77,9 @@
               </svg>
               <span class="text-xs mt-2">SITES</span>
             </a>
-    
+
           </li>
-    
+
           <li class="mt-3 p-2 text-blue-600 dark:text-blue-300 rounded-lg">
             <a href="/projets" class=" flex flex-col items-center">
               <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@
               <span class="text-xs mt-2">PROJECTS</span>
             </a>
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
                   				rounded-lg">
             <a href="/users" class=" flex flex-col items-center">
@@ -105,9 +105,9 @@
               </svg>
               <span class="text-xs mt-2">USERS</span>
             </a>
-    
+
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
                   				rounded-lg">
             <a href="/documents" class=" flex flex-col items-center">
@@ -124,9 +124,9 @@
               </svg>
               <span class="text-xs mt-2">DOCUMENTS</span>
             </a>
-    
+
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
                   				rounded-lg">
             <a href="/sensibilisations" class=" flex flex-col items-center">
@@ -143,9 +143,9 @@
               </svg>
               <span class="text-xs mt-2">SENSIBILISATIONS</span>
             </a>
-    
+
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
                   				rounded-lg">
             <a href="/tasks" class=" flex flex-col items-center">
@@ -159,7 +159,7 @@
               <span class="text-xs mt-2">TASKS</span>
             </a>
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
                             				rounded-lg">
             <a href="/users_lists" class=" flex flex-col items-center">
@@ -173,7 +173,7 @@
               <span class="text-xs mt-2">TASKS-USERS</span>
             </a>
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 rounded-lg">
             <a href="/emergencies" class=" flex flex-col items-center">
               <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -184,7 +184,7 @@
               <span class="text-xs mt-2">EMERGENCIES</span>
             </a>
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 rounded-lg">
             <a href="/risks" class=" flex flex-col items-center">
               <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -195,7 +195,7 @@
               <span class="text-xs mt-2">RISKS</span>
             </a>
           </li>
-    
+
           <li class="mt-3 p-2 hover:text-blue-600 rounded-lg">
             <a href="/incidents" class=" flex flex-col items-center">
               <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
@@ -205,6 +205,18 @@
               </svg>
               <span class="text-xs mt-2">INCIDENTS</span>
             </a>
+          </li>
+          <li class="mt-3 p-2 hover:text-blue-600 rounded-lg">
+            <a class=" flex flex-col items-center" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+              <button type="button"
+                class=" rounded-full  bg-yellow-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">
+                {{ __('Logout') }}
+              </button>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
           </li>
         </ul>
       </div>
