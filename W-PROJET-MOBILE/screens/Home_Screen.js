@@ -76,7 +76,7 @@ export default function Pat_Home_Screen({ navigation }) {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl bg-[#8D8CF5] p-4 shadow-xl shadow-orange-300">
+                    <TouchableOpacity className="m-3 rounded-2xl bg-gray-500 p-4 shadow-xl shadow-orange-300">
                         <View>
                             <View>
                                 <Text className="text-xl font-semibold text-white">
@@ -85,7 +85,7 @@ export default function Pat_Home_Screen({ navigation }) {
                                 <Text className="text-center text-[#ed9b28]">
                                     {item.description}
                                 </Text>
-                                <Text className=" text-end text-gray-400">
+                                <Text className=" text-end text-white">
                                     {item.created_at}
                                 </Text>
                             </View>

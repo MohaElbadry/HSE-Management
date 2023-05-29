@@ -45,17 +45,17 @@ export default function ProjSites({ navigation }) {
 
     return (
         <View
-            className="flex-1  "
-            style={{
-                backgroundColor: "#8D8CF5",
-            }}
+            className="flex-1 bg-gray-400 "
+            // style={{
+            //     backgroundColor: "#8D8CF5",
+            // }}
         >
             <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-10 ">
                 <Text className="px-2 text-4xl font-semibold text-[#5C469C]">
                     Our Projet and Sites
                 </Text>
             </View>
-            <Text className="px-2 pt-2 text-center text-xl font-semibold text-dark">
+            <Text className="text-dark px-2 pt-2 text-center text-xl font-semibold">
                 Our Sites
             </Text>
             <FlatList
@@ -82,7 +82,7 @@ export default function ProjSites({ navigation }) {
                     </TouchableOpacity>
                 )}
             />
-            <Text className="px-2 text-center text-xl font-semibold text-dark">
+            <Text className="text-dark px-2 text-center text-xl font-semibold">
                 Our projectsr
             </Text>
             <FlatList

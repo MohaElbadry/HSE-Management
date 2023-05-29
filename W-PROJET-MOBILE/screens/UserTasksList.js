@@ -51,11 +51,9 @@ export default function UserTasksList({ navigation }) {
     return (
         <View className="flex-1  bg-white">
             <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="px-2 text-4xl font-semibold text-dark">
+                <Text className="text-dark px-2 text-4xl font-semibold">
                     List of Your Tasks
                 </Text>
-
-                
             </View>
 
             <FlatList
@@ -65,7 +63,7 @@ export default function UserTasksList({ navigation }) {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl  bg-[#8D8CF5] p-4 shadow-xl">
+                    <TouchableOpacity className="m-3 rounded-2xl  bg-gray-500 p-4 shadow-xl">
                         <View>
                             <View>
                                 <Text className="text-xl font-semibold text-white">

@@ -95,10 +95,6 @@ export default function Login({ navigation }) {
                     />
                 </View>
 
-<div className="Main">
-    <h1>Mhzoooz ANA</h1>
-    </div>
-
                 <View className="w-full flex-col   ">
                     <Text className="col-start-1 mx-7 mt-4 w-fit">
                         Password
@@ -126,7 +122,7 @@ export default function Login({ navigation }) {
             </View>
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
-                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#8D8CF5]  shadow-lg"
+                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#1B2223]  shadow-lg"
                     onPress={handelLogin}
                 >
                     <Text className=" self-center text-xl text-white">

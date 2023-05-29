@@ -23,7 +23,7 @@ export default function Home({ navigation }) {
             >
                 <Image
                     source={require("../assets/HSE-2.2png.png")}
-                    className="mt-240 h-2/3 w-80 rotate-180  items-center self-center bg-white from-neutral-50 drop-shadow-xl"
+                    className="mt-240 h-2/3 w-96 rotate-180  items-center self-center bg-white from-neutral-50 drop-shadow-xl"
                 />
             </View>
             <View className="w-full basis-1/3 flex-col  items-center ">
@@ -35,7 +35,7 @@ export default function Home({ navigation }) {
                     Ensure a secure and sustainable future for all.
                 </Text>
                 <TouchableOpacity
-                    className="absolute bottom-10 mt-8 h-12 w-60 justify-center self-center rounded-lg bg-[#8D8CF5]  shadow-lg"
+                    className="absolute bottom-10 mt-8 h-12 w-60 justify-center self-center rounded-lg bg-[#1B2223]   shadow-lg"
                     onPress={() => navigation.navigate("Login")}
                 >
                     <Text className=" self-center text-xl font-bold text-white">

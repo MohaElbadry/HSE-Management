@@ -5,21 +5,20 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function Projet({ navigation }) {
     return (
-       /* This is a React Native component that renders a page for adding complaints. It includes a three buttons for adding different types of
+        /* This is a React Native component that renders a page for adding complaints. It includes a three buttons for adding different types of
        complaints. 
         The `navigation` prop is used to handle navigation between different screens. */
-        <View
-            className="flex-1 bg-white "
-            
-        >
-            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#8D8CF5] px-4 pb-8 pt-16 drop-shadow-xl">
+        <View className="flex-1 bg-white ">
+            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#1B2223]  px-4 pb-8 pt-16 drop-shadow-xl">
                 <AntDesign
                     name="arrowleft"
                     size={24}
                     color="white"
                     onPress={() => navigation.goBack()}
                 />
-                <Text className="text-start text-xl font-bold text-white">Complaint Page</Text>
+                <Text className="text-start text-xl font-bold text-white">
+                    Complaint Page
+                </Text>
                 <Text className="text-xl font-extrabold  text-[#4DCFC0]">
                     {"  "}
                 </Text>
@@ -27,7 +26,7 @@ export default function Projet({ navigation }) {
 
             <View className="mt-24 flex items-center justify-center pl-5">
                 <TouchableOpacity
-                    className="mb-4 rounded-2xl bg-[#4361ee] p-3  shadow-xl"
+                    className="mb-4 rounded-2xl bg-[#ae8654] p-3  shadow-xl"
                     onPress={() => navigation.navigate("AddIncident")}
                 >
                     <Text className="px-4 py-2 text-3xl font-semibold text-white">
@@ -35,7 +34,7 @@ export default function Projet({ navigation }) {
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    className="mb-4 rounded-2xl  bg-[#4361ee] p-3  shadow-xl"
+                    className="mb-4 rounded-2xl bg-[#ae8654]  p-3  shadow-xl"
                     onPress={() => navigation.navigate("AddRisk")}
                 >
                     <Text className="px-4 py-2 text-3xl font-semibold text-white">
@@ -43,7 +42,7 @@ export default function Projet({ navigation }) {
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    className="mb-4 rounded-2xl  bg-[#4361ee]  p-3  shadow-xl"
+                    className="mb-4 rounded-2xl  bg-[#ae8654]  p-3  shadow-xl"
                     onPress={() => navigation.navigate("AddEmergencie")}
                 >
                     <Text className="px-4 py-2 text-3xl font-semibold text-white">

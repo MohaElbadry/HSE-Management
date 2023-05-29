@@ -84,12 +84,12 @@ export default function AddRisk({ navigation }) {
 
     return (
         <View
-            className="flex-1  "
-            style={{
-                backgroundColor: "#F6F6F6",
-            }}
+            className="flex-1  bg-orange-600 "
+            // style={{
+            //     backgroundColor: "#F6F6F6",
+            // }}
         >
-            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#1B2223] px-4 pb-8 pt-16 drop-shadow-xl">
+            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-orange-600 px-4 pb-8 pt-16 drop-shadow-xl">
                 <AntDesign
                     name="arrowleft"
                     size={24}
@@ -125,9 +125,7 @@ export default function AddRisk({ navigation }) {
                     />
                 </View>
                 <View className="w-full flex-col   ">
-                    <Text className="col-start-1 mx-7 mt-4 w-fit">
-                        Projet 
-                    </Text>
+                    <Text className="col-start-1 mx-7 mt-4 w-fit">Projet</Text>
                     <Picker
                         style={{
                             borderWidth: 1,
@@ -162,7 +160,7 @@ export default function AddRisk({ navigation }) {
             </View>
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
-                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#8D8CF5] shadow-lg"
+                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#ae8654] shadow-lg"
                     onPress={handelAddRisk}
                 >
                     <Text className=" self-center text-xl text-white">ADD</Text>
