@@ -84,12 +84,12 @@ export default function AddRisk({ navigation }) {
 
     return (
         <View
-            className="flex-1  bg-orange-600 "
-            // style={{
-            //     backgroundColor: "#F6F6F6",
-            // }}
+            className="flex-1  "
+            style={{
+                backgroundColor: "#F6F6F6",
+            }}
         >
-            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-orange-600 px-4 pb-8 pt-16 drop-shadow-xl">
+            <View className=" flex  w-full flex-row justify-between rounded-b-3xl bg-[#1B2223] px-4 pb-8 pt-16 drop-shadow-xl">
                 <AntDesign
                     name="arrowleft"
                     size={24}
@@ -128,21 +128,13 @@ export default function AddRisk({ navigation }) {
                     <Text className="col-start-1 mx-7 mt-4 w-fit">Projet</Text>
                     <Picker
                         style={{
-                            borderWidth: 1,
-                            marginHorizontal: 7,
-                            height: 40,
-                            width: 80,
-                            borderRadius: 10,
-                            borderColor: "gray",
-                            backgroundColor: "white",
-                            paddingHorizontal: 8,
+                            marginHorizontal: 37,
+
                             shadowColor: "black",
                             shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.2,
-                            shadowRadius: 2,
+
                             elevation: 2,
                         }}
-                        pla
                         selectedValue={selectedProjectId}
                         onValueChange={handleProjectChange}
                     >

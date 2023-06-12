@@ -6,14 +6,21 @@ import { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { API_BASE_URL } from "../IP.js";
+import moment from "moment";
 
 export default function UserTasksList({ navigation }) {
     /* This code is defining a functional component called `UserTasksList` that displays a list of
     tasks for a user. */
     const [lists, setLists] = useState([]);
 
-    useEffect(() => {
-        fetchData();
+          useEffect(() => {
+    fetchData();
+
+    const interval = setInterval(fetchData, 6000); // Refresh data every 1 seconde (adjust as needed)
+
+    return () => {
+      clearInterval(interval); // Clean up the interval on component unmount
+    };
     }, []);
     const fetchData = async () => {
         try {
@@ -49,9 +56,9 @@ export default function UserTasksList({ navigation }) {
     };
 
     return (
-        <View className="flex-1  bg-white">
-            <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="text-dark px-2 text-4xl font-semibold">
+        <View className="flex-1  bg-[#1E1E1E]">
+            <View className="rounded-b-4xl w-full rounded-xl self-center  bg-[#2d2d2d] px-4 pt-10 pb-3 ">
+                <Text className="text-white px-2 text-4xl self-center font-semibold">
                     List of Your Tasks
                 </Text>
             </View>
@@ -63,17 +70,18 @@ export default function UserTasksList({ navigation }) {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl  bg-gray-500 p-4 shadow-xl">
+                    <TouchableOpacity className="m-3 rounded-2xl  bg-[#2d2d2d] p-4 shadow-xl">
                         <View>
                             <View>
                                 <Text className="text-xl font-semibold text-white">
                                     {item.task_lib}
                                 </Text>
-                                <Text className="text-center text-[#ed9b28]">
+                                <Text className="text-center text-[#9e9e9e]">
                                     {item.tasks_description}
                                 </Text>
                                 <Text className="text-end text-gray-200">
-                                    {item.created_at}
+                                                                        {moment(item.created_at).format("HH:mm:ss")}
+
                                 </Text>
                             </View>
                         </View>
@@ -97,7 +105,7 @@ export default function UserTasksList({ navigation }) {
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Add")}
                     >
-                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#8D8CF5] ">
+                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#0085ff] ">
                             <AntDesign
                                 name="pluscircleo"
                                 size={28}

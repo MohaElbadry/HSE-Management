@@ -59,7 +59,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 authenticated users. The group includes several resource routes for controllers such as
 `UserController`, `SiteController`... Additionally, there are three PDF routes for generating PDF files for
 risks, projets, and a global PDF. */
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:A'])->group(function () {
     // Routes that require authentication
     Route::resource('users', UserController::class);
     Route::resource('sites', SiteController::class);

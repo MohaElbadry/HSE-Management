@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { API_BASE_URL } from "../IP.js";
+import moment from "moment";
 
 export default function Pat_Home_Screen({ navigation }) {
     /* 
@@ -59,13 +60,12 @@ export default function Pat_Home_Screen({ navigation }) {
         <View
             className="flex-1  "
             style={{
-                backgroundColor: "#F6F6F6",
+                backgroundColor: "#1E1E1E",
             }}
         >
-            <View className="rounded-b-4xl w-full rounded-xl bg-white px-4 pt-16 ">
-                <Text className="px-2 text-2xl font-semibold text-[#0c3330]">
-                    Let's create an optimal work environment together for better
-                    productivity
+            <View className="rounded-b-4xl w-full rounded-xl bg-[#2d2d2d] px-4 pt-10 pb-2 ">
+                <Text className="self-center px-2 text-2xl font-bold text-white">
+                    Better Productivity
                 </Text>
             </View>
 
@@ -76,17 +76,17 @@ export default function Pat_Home_Screen({ navigation }) {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity className="m-3 rounded-2xl bg-gray-500 p-4 shadow-xl shadow-orange-300">
+                    <TouchableOpacity className="shadow-[#9e9e9e] shadow-xl m-3 rounded-2xl bg-[#2d2d2d] p-4">
                         <View>
                             <View>
                                 <Text className="text-xl font-semibold text-white">
                                     {item.titre}
                                 </Text>
-                                <Text className="text-center text-[#ed9b28]">
+                                <Text className="text-center text-[#9e9e9e]">
                                     {item.description}
                                 </Text>
                                 <Text className=" text-end text-white">
-                                    {item.created_at}
+                                    {moment(item.created_at).format("HH:mm:ss")}
                                 </Text>
                             </View>
                         </View>
@@ -110,7 +110,7 @@ export default function Pat_Home_Screen({ navigation }) {
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Add")}
                     >
-                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#8D8CF5] ">
+                        <View className=" flex h-10 w-10 items-center justify-center rounded-full bg-[#0085ff] ">
                             <AntDesign
                                 name="pluscircleo"
                                 size={28}

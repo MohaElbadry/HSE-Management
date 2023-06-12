@@ -66,41 +66,41 @@ export default function Login({ navigation }) {
     };
     return (
         <View
-            className="mt-4 flex-1 flex-col   items-center "
+            className=" flex-1 flex-col   items-center "
             style={{
-                backgroundColor: "#F6F6F6",
+                backgroundColor: "#1E1E1E",
             }}
         >
             <View className=" mx-5  mb-14  w-full items-center justify-center rounded-br-full ">
                 <View className=" mt-10 ml-5 self-start">
-                    <AntDesign name="arrowleft" size={24} color="black" />
+                    <AntDesign name="arrowleft" size={24} color="white" />
                 </View>
                 <Image
                     source={require("../assets/1.png")}
                     className="h-20  w-80  from-neutral-50 drop-shadow-xl"
                 />
-                <Text className="  mt-3 text-xl font-bold  text-[#1a1613] ">
+                <Text className="  mt-3 text-xl font-bold  text-white ">
                     Login As A User
                 </Text>
             </View>
             <View className="mt-5  w-full flex-col">
                 <View className="w-full flex-col   ">
-                    <Text className="col-start-1 mx-7 mt-3 w-fit">
+                    <Text className="col-start-1 mx-7 mt-3 w-fit text-white">
                         Email Address
                     </Text>
                     <TextInput
-                        className="border-1 mx-7 h-10 w-80 rounded-md  border-gray-400 bg-white p-2 shadow-sm "
+                        className="border-1 mx-7 h-10 rounded-md  border-gray-400 bg-[#FFFFFF] p-2 shadow-sm "
                         placeholder={"example@mail.com"}
                         onChangeText={(text) => setEmail(text)}
                     />
                 </View>
 
                 <View className="w-full flex-col   ">
-                    <Text className="col-start-1 mx-7 mt-4 w-fit">
+                    <Text className="col-start-1 mx-7 mt-4 w-fit text-white">
                         Password
                     </Text>
                     <TextInput
-                        className="border-1 mx-7 h-10 w-80 rounded-md  border-gray-400 bg-white p-2 shadow-sm "
+                        className="border-1 mx-7 h-10   rounded-md  border-gray-400 bg-white p-2 shadow-sm "
                         placeholder={"At least 8 characters"}
                         value={{ password }}
                         onChangeText={(pass) => setPassword(pass)}
@@ -108,7 +108,7 @@ export default function Login({ navigation }) {
                     />
                     {message && (
                         <Text
-                            class=" mx-7 font-semibold text-red-500"
+                            class=" mx-7 font-semibold text-red-200"
                             style={{
                                 color: "red",
                                 fontWeight: "bold",
@@ -122,7 +122,7 @@ export default function Login({ navigation }) {
             </View>
             <View className=" mx-10 mt-20">
                 <TouchableOpacity
-                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#1B2223]  shadow-lg"
+                    className="mt-3 h-12 w-60 justify-center self-center rounded-lg bg-[#0085ff]  shadow-lg"
                     onPress={handelLogin}
                 >
                     <Text className=" self-center text-xl text-white">

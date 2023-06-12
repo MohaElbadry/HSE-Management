@@ -117,23 +117,16 @@ export default function AddEmergencie({ navigation }) {
                 </View>
                 <View className="w-full flex-col   ">
                     <Text className="col-start-1 mx-7 mt-4 w-fit">Projet</Text>
-                    <Picker
+                   <Picker
                         style={{
-                            borderWidth: 1,
-                            marginHorizontal: 7,
-                            height: 40,
-                            width: 80,
-                            borderRadius: 10,
-                            borderColor: "gray",
-                            backgroundColor: "white",
-                            paddingHorizontal: 8,
+                            marginHorizontal: 37,
+                            
+                            
                             shadowColor: "black",
                             shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.2,
-                            shadowRadius: 2,
+                            
                             elevation: 2,
                         }}
-                        pla
                         selectedValue={selectedProjectId}
                         onValueChange={handleProjectChange}
                     >

@@ -23,7 +23,7 @@ export default function Home({ navigation }) {
             >
                 <Image
                     source={require("../assets/HSE-2.2png.png")}
-                    className="mt-240 h-2/3 w-96 rotate-180  items-center self-center bg-white from-neutral-50 drop-shadow-xl"
+                    className="mb-14 h-96 w-full rotate-180 scale-100  items-center self-center bg-white from-neutral-50 drop-shadow-xl"
                 />
             </View>
             <View className="w-full basis-1/3 flex-col  items-center ">
@@ -46,3 +46,5 @@ export default function Home({ navigation }) {
         </View>
     );
 }
+
+
